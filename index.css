@@ -1,0 +1,453 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-color: #fff;
+  color: #111;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  /* not imported yet */
+}
+
+.button, .button--secondary, .button--danger {
+  position: relative;
+  display: inline-block;
+  width: 8rem;
+  padding: 0.75rem 1rem;
+  margin: 0.25rem;
+  overflow: hidden;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: #111;
+  border: 3px solid #111;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  -webkit-transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.button:hover, .button--secondary:hover, .button--danger:hover {
+  color: #111;
+  background: #fff;
+}
+
+.button--secondary {
+  background: #fff;
+  color: #111;
+}
+
+.button--secondary:hover {
+  background: #111;
+  color: #fff;
+}
+
+.button--danger {
+  background: #ce3434;
+  border: 3px solid #ce3434;
+}
+
+.button--danger:hover {
+  background: #fff;
+  color: #ce3434;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  z-index: 10;
+}
+
+header .main-logo {
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+header .main-logo a {
+  color: #111;
+  text-decoration: none;
+}
+
+header .main-logo a .first-line,
+header .main-logo a .second-line {
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+
+header .main-logo a .first-line span,
+header .main-logo a .second-line span {
+  display: inline-block;
+  font-size: 1em;
+  width: 1.25em;
+  height: 0.9em;
+  text-align: center;
+  margin-bottom: 0.1em;
+}
+
+header .main-logo a .first-line span .triangle,
+header .main-logo a .second-line span .triangle {
+  width: 0;
+  height: 0;
+  border-left: 0.45em solid transparent;
+  border-right: 0.45em solid transparent;
+  border-bottom: 0.75em solid #ffa520;
+  margin: 0.2em auto 0;
+}
+
+header .main-logo a .first-line span .rectangle,
+header .main-logo a .second-line span .rectangle {
+  width: 0.4em;
+  height: 0.75em;
+  background: #0068aa;
+  margin: 0.2em auto 0;
+}
+
+header .main-logo a .second-line span .square {
+  width: 0.75em;
+  height: 0.75em;
+  margin: 0.2em auto 0;
+}
+
+header .main-logo a .second-line span:nth-of-type(3) .square {
+  background: #ce3434;
+}
+
+header .main-logo a .second-line span:nth-of-type(4) .square {
+  background: #0068aa;
+}
+
+header .main-logo a .second-line span:nth-of-type(6) .square {
+  background: #ffa520;
+}
+
+header .hamburger-wrapper {
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: auto;
+  background: pink;
+}
+
+header .hamburger-wrapper .hamburger, header .hamburger-wrapper .hamburger--open {
+  position: absolute;
+  width: 2.5rem;
+  height: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "span1 span1 span1" "span2 . span3" "span4 span4 span4";
+  z-index: 1;
+}
+
+header .hamburger-wrapper .hamburger span, header .hamburger-wrapper .hamburger--open span {
+  height: 0.25rem;
+  background: #111;
+}
+
+header .hamburger-wrapper .hamburger span:nth-of-type(1), header .hamburger-wrapper .hamburger--open span:nth-of-type(1), header .hamburger-wrapper .hamburger span:nth-of-type(4), header .hamburger-wrapper .hamburger--open span:nth-of-type(4) {
+  width: 2.5rem;
+}
+
+header .hamburger-wrapper .hamburger span:nth-of-type(2), header .hamburger-wrapper .hamburger--open span:nth-of-type(2), header .hamburger-wrapper .hamburger span:nth-of-type(3), header .hamburger-wrapper .hamburger--open span:nth-of-type(3) {
+  width: 0.5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+header .hamburger-wrapper .hamburger span:nth-of-type(1), header .hamburger-wrapper .hamburger--open span:nth-of-type(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: span1;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+header .hamburger-wrapper .hamburger span:nth-of-type(2), header .hamburger-wrapper .hamburger--open span:nth-of-type(2) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: span2;
+}
+
+header .hamburger-wrapper .hamburger span:nth-of-type(3), header .hamburger-wrapper .hamburger--open span:nth-of-type(3) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: span3;
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
+header .hamburger-wrapper .hamburger span:nth-of-type(4), header .hamburger-wrapper .hamburger--open span:nth-of-type(4) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: span4;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+header .hamburger-wrapper .dot-track {
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  width: inherit;
+  height: calc(100vh - 1.3rem);
+}
+
+header .hamburger-wrapper .dot-track .dot {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  background: #ce3434;
+}
+
+#project-cards-container {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  padding: 1rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  z-index: 0;
+}
+
+#project-cards-container .project-card-wrapper, #project-cards-container .project-card-wrapper--open {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 80vh;
+  margin: 0 0.5rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+#project-cards-container .project-card-wrapper:not(:first-of-type), #project-cards-container .project-card-wrapper--open:not(:first-of-type) {
+  -webkit-transform: rotateY(-50deg);
+          transform: rotateY(-50deg);
+}
+
+#project-cards-container .project-card-wrapper:last-of-type, #project-cards-container .project-card-wrapper--open:last-of-type {
+  margin-right: 50%;
+}
+
+#project-cards-container .project-card-wrapper:nth-of-type(3n - 2) .project-card, #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 2) .project-card {
+  background: #ce3434;
+}
+
+#project-cards-container .project-card-wrapper:nth-of-type(3n - 1) .project-card, #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 1) .project-card {
+  background: #0068aa;
+}
+
+#project-cards-container .project-card-wrapper:nth-of-type(3n) .project-card, #project-cards-container .project-card-wrapper--open:nth-of-type(3n) .project-card {
+  background: #ffa520;
+}
+
+#project-cards-container .project-card-wrapper .project-card, #project-cards-container .project-card-wrapper--open .project-card {
+  width: 100%;
+  height: inherit;
+  padding: 0.5rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto auto;
+      grid-template-rows: auto 1fr auto auto;
+  z-index: 2;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+#project-cards-container .project-card-wrapper .project-card:last-of-type, #project-cards-container .project-card-wrapper--open .project-card:last-of-type {
+  margin-right: 50%;
+}
+
+#project-cards-container .project-card-wrapper .project-card .project-number, #project-cards-container .project-card-wrapper--open .project-card .project-number {
+  font-size: 6rem;
+  font-weight: 500;
+  color: #fff;
+  -webkit-transition: font-size 0.2s ease-in-out;
+  transition: font-size 0.2s ease-in-out;
+}
+
+#project-cards-container .project-card-wrapper .project-card .project-title, #project-cards-container .project-card-wrapper--open .project-card .project-title {
+  width: 9rem;
+  white-space: normal;
+  padding-right: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  -webkit-transition: margin 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: margin 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+#project-cards-container .project-card-wrapper .project-card .project-type, #project-cards-container .project-card-wrapper--open .project-card .project-type {
+  width: 9rem;
+  white-space: normal;
+  padding-right: 100%;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: 400;
+  padding-right: 100%;
+  text-transform: capitalize;
+}
+
+#project-cards-container .project-card-wrapper .project-details, #project-cards-container .project-card-wrapper--open .project-details {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  height: inherit;
+  width: 75%;
+  padding: 1rem 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: normal;
+  background: #fff;
+  z-index: -1;
+}
+
+#project-cards-container .project-card-wrapper .project-details .project-logo, #project-cards-container .project-card-wrapper--open .project-details .project-logo {
+  display: block;
+  width: 8rem;
+  margin: 0 auto 2rem;
+}
+
+#project-cards-container .project-card-wrapper .project-details .project-screenshot-wrapper, #project-cards-container .project-card-wrapper--open .project-details .project-screenshot-wrapper {
+  display: none;
+}
+
+#project-cards-container .project-card-wrapper .project-details h3, #project-cards-container .project-card-wrapper--open .project-details h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1.5em;
+  padding: 0 1rem;
+}
+
+#project-cards-container .project-card-wrapper .project-details .project-text, #project-cards-container .project-card-wrapper--open .project-details .project-text {
+  padding: 0 1rem 1.5em;
+}
+
+#project-cards-container .project-card-wrapper .project-details .project-text p, #project-cards-container .project-card-wrapper--open .project-details .project-text p {
+  font-size: 1rem;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+#project-cards-container .project-card-wrapper .project-details .created-with, #project-cards-container .project-card-wrapper--open .project-details .created-with {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1rem 1.5em;
+}
+
+#project-cards-container .project-card-wrapper .project-details .created-with h3, #project-cards-container .project-card-wrapper--open .project-details .created-with h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 1.5em;
+  padding: 0 1rem;
+}
+
+#project-cards-container .project-card-wrapper .project-details .created-with .lang-container, #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#project-cards-container .project-card-wrapper .project-details .created-with .lang-container img, #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container img {
+  width: 4rem;
+}
+
+#project-cards-container .project-card-wrapper .project-details .created-with .lang-container p, #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container p {
+  color: #555;
+}
+
+#project-cards-container .project-card-wrapper .project-details .buttons, #project-cards-container .project-card-wrapper--open .project-details .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#project-cards-container .project-card-wrapper--open {
+  width: 100%;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#project-cards-container .project-card-wrapper--open .project-card {
+  width: 25%;
+}
+
+#project-cards-container .project-card-wrapper--open .project-card .project-number {
+  font-size: 2rem;
+}
+
+#project-cards-container .project-card-wrapper--open .project-card .project-title {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin-left: 3rem;
+}
+
+#project-cards-container .project-card-wrapper--open .project-card .project-type {
+  opacity: 0;
+}
+
+#blank {
+  height: 100vh;
+}
+/*# sourceMappingURL=index.css.map */

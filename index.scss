@@ -1,0 +1,432 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$white: #fff;
+$black: #111;
+$red: #ce3434;
+$blue: #0068aa;
+$yellow: #ffa520;
+$grey: #555;
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-color: $white;
+  color: $black;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif; /* not imported yet */
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  width: 8rem;
+  padding: 0.75rem 1rem;
+  margin: 0.25rem;
+  overflow: hidden;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+
+  background: $black;
+  border: 3px solid $black;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:hover {
+    color: $black;
+    background: $white;
+  }
+
+  &--secondary {
+    @extend .button;
+    background: $white;
+    color: $black;
+
+    &:hover {
+      background: $black;
+      color: $white;
+    }
+  }
+
+  &--danger {
+    @extend .button;
+    background: $red;
+    border: 3px solid $red;
+
+    &:hover {
+      background: $white;
+      color: $red;
+    }
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  z-index: 10;
+
+  .main-logo {
+    display: inline-block;
+    font-size: 1.5rem;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      .first-line,
+      .second-line {
+        font-weight: 600;
+        display: flex;
+        flex-flow: row nowrap;
+
+        span {
+          display: inline-block;
+          font-size: 1em;
+          width: 1.25em;
+          height: 0.9em;
+          text-align: center;
+          margin-bottom: 0.1em;
+
+          .triangle {
+            width: 0;
+            height: 0;
+            border-left: 0.45em solid transparent;
+            border-right: 0.45em solid transparent;
+            border-bottom: 0.75em solid $yellow;
+            margin: 0.2em auto 0;
+          }
+
+          .rectangle {
+            width: 0.4em;
+            height: 0.75em;
+            background: $blue;
+            margin: 0.2em auto 0;
+          }
+        }
+      }
+
+      .second-line {
+        span {
+          .square {
+            width: 0.75em;
+            height: 0.75em;
+            margin: 0.2em auto 0;
+          }
+
+          &:nth-of-type(3) {
+            .square {
+              background: $red;
+            }
+          }
+
+          &:nth-of-type(4) {
+            .square {
+              background: $blue;
+            }
+          }
+
+          &:nth-of-type(6) {
+            .square {
+              background: $yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger-wrapper {
+    position: absolute;
+    top: 1.3rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: auto;
+    background: pink;
+
+    .hamburger {
+      position: absolute;
+      width: 2.5rem;
+      height: 2rem;
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas:
+        "span1 span1 span1"
+        "span2 . span3"
+        "span4 span4 span4";
+      z-index: 1;
+
+      span {
+        height: 0.25rem;
+        background: $black;
+
+        &:nth-of-type(1),
+        &:nth-of-type(4) {
+          width: 2.5rem;
+        }
+
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+          width: 0.5rem;
+          align-self: center;
+        }
+
+        &:nth-of-type(1) {
+          grid-area: span1;
+          align-self: flex-start;
+        }
+
+        &:nth-of-type(2) {
+          grid-area: span2;
+        }
+
+        &:nth-of-type(3) {
+          grid-area: span3;
+          justify-self: right;
+        }
+
+        &:nth-of-type(4) {
+          grid-area: span4;
+          align-self: flex-end;
+        }
+      }
+
+      &--open {
+        @extend .hamburger;
+      }
+    }
+
+    .dot-track {
+      //   background: rgba(255, 0, 0, 0.4);
+      position: absolute;
+      top: 0rem;
+      left: 0;
+      width: inherit;
+      height: calc(100vh - 1.3rem);
+
+      .dot {
+        position: absolute;
+        top: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
+        background: $red;
+      }
+    }
+  }
+}
+
+#project-cards-container {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  padding: 1rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  perspective: 1000px;
+  z-index: 0;
+
+  .project-card-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 80vh;
+    margin: 0 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:not(:first-of-type) {
+      transform: rotateY(-50deg);
+    }
+
+    &:last-of-type {
+      margin-right: 50%;
+    }
+
+    &:nth-of-type(3n - 2) {
+      .project-card {
+        background: $red;
+      }
+    }
+
+    &:nth-of-type(3n - 1) {
+      .project-card {
+        background: $blue;
+      }
+    }
+
+    &:nth-of-type(3n) {
+      .project-card {
+        background: $yellow;
+      }
+    }
+
+    .project-card {
+      width: 100%;
+      height: inherit;
+      padding: 0.5rem;
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+      z-index: 2;
+      transition: all 0.2s ease-in-out;
+
+      &:last-of-type {
+        margin-right: 50%;
+      }
+
+      .project-number {
+        font-size: 6rem;
+        font-weight: 500;
+        color: $white;
+        transition: font-size 0.2s ease-in-out;
+      }
+
+      .project-title {
+        width: 9rem;
+        white-space: normal;
+        padding-right: 100%;
+        color: $white;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.5em;
+        text-transform: uppercase;
+        transform-origin: bottom left;
+        transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+      }
+
+      .project-type {
+        width: 9rem;
+        white-space: normal;
+        padding-right: 100%;
+        color: $white;
+        font-size: 1rem;
+        line-height: 1.5em;
+        font-weight: 400;
+        padding-right: 100%;
+        text-transform: capitalize;
+      }
+    }
+
+    .project-details {
+      position: absolute;
+      top: 0;
+      left: 25%;
+      height: inherit;
+      width: 75%;
+      padding: 1rem 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      white-space: normal;
+      background: $white;
+      z-index: -1;
+
+      .project-logo {
+        display: block;
+        width: 8rem;
+        margin: 0 auto 2rem;
+      }
+
+      .project-screenshot-wrapper {
+        display: none;
+      }
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 1.5em;
+        padding: 0 1rem;
+      }
+
+      .project-text {
+        padding: 0 1rem 1.5em;
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5em;
+          text-align: justify;
+        }
+      }
+
+      .created-with {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        padding: 0 1rem 1.5em;
+
+        h3 {
+          font-size: 1rem;
+          font-weight: 600;
+          text-transform: capitalize;
+          margin-bottom: 1.5em;
+          padding: 0 1rem;
+        }
+
+        .lang-container {
+          text-align: center;
+          margin-bottom: 1.5rem;
+
+          img {
+            width: 4rem;
+          }
+
+          p {
+            color: $grey;
+          }
+        }
+      }
+
+      .buttons {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+    }
+
+    &--open {
+      @extend .project-card-wrapper;
+      width: 100%;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+
+      .project-card {
+        width: 25%;
+
+        .project-number {
+          font-size: 2rem;
+        }
+
+        .project-title {
+          transform: rotate(-90deg);
+          margin-left: 3rem;
+        }
+
+        .project-type {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+#blank {
+  height: 100vh;
+}
