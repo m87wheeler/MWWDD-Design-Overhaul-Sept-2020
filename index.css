@@ -137,6 +137,36 @@ body {
   color: #ce3434;
 }
 
+.social-media-links {
+  width: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.social-media-links .social-link {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.social-media-links .social-link img {
+  opacity: 1;
+  width: 2.5rem;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.social-media-links .social-link img:hover {
+  opacity: 0.8;
+}
+
 @-webkit-keyframes spinner-rotate {
   from {
     -webkit-transform: rotate(0);
@@ -186,6 +216,7 @@ body {
 }
 
 #splash-page {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -607,71 +638,7 @@ header .header-background {
 header .main-logo {
   position: relative;
   display: inline-block;
-  font-size: 1.5rem;
   z-index: 1;
-}
-
-header .main-logo a {
-  color: #231f20;
-  text-decoration: none;
-}
-
-header .main-logo a .first-line,
-header .main-logo a .second-line {
-  font-weight: 600;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-}
-
-header .main-logo a .first-line span,
-header .main-logo a .second-line span {
-  display: inline-block;
-  font-size: 1em;
-  width: 1.25em;
-  height: 0.9em;
-  text-align: center;
-  margin-bottom: 0.1em;
-}
-
-header .main-logo a .first-line span .triangle,
-header .main-logo a .second-line span .triangle {
-  width: 0;
-  height: 0;
-  border-left: 0.45em solid transparent;
-  border-right: 0.45em solid transparent;
-  border-bottom: 0.75em solid #ffa520;
-  margin: 0.2em auto 0;
-}
-
-header .main-logo a .first-line span .rectangle,
-header .main-logo a .second-line span .rectangle {
-  width: 0.4em;
-  height: 0.75em;
-  background: #0068aa;
-  margin: 0.2em auto 0;
-}
-
-header .main-logo a .second-line span .square {
-  width: 0.75em;
-  height: 0.75em;
-  margin: 0.2em auto 0;
-}
-
-header .main-logo a .second-line span:nth-of-type(3) .square {
-  background: #ce3434;
-}
-
-header .main-logo a .second-line span:nth-of-type(4) .square {
-  background: #0068aa;
-}
-
-header .main-logo a .second-line span:nth-of-type(6) .square {
-  background: #ffa520;
 }
 
 header .hamburger-wrapper {
@@ -857,36 +824,6 @@ header .main-nav ul li:nth-of-type(3n - 1) a::after, header .main-nav--open ul l
 
 header .main-nav ul li:nth-of-type(3n - 2) a::after, header .main-nav--open ul li:nth-of-type(3n - 2) a::after {
   border-bottom: 0.5rem solid #0068aa;
-}
-
-header .main-nav .social-media-links, header .main-nav--open .social-media-links {
-  width: 20rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  margin: 0 auto;
-}
-
-header .main-nav .social-media-links .social-link, header .main-nav--open .social-media-links .social-link {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  -ms-grid-column-align: center;
-      justify-self: center;
-}
-
-header .main-nav .social-media-links .social-link img, header .main-nav--open .social-media-links .social-link img {
-  opacity: 1;
-  width: 2.5rem;
-  -webkit-transition: opacity 0.2s ease-in-out;
-  transition: opacity 0.2s ease-in-out;
-}
-
-header .main-nav .social-media-links .social-link img:hover, header .main-nav--open .social-media-links .social-link img:hover {
-  opacity: 0.8;
 }
 
 header .main-nav .short-logo, header .main-nav--open .short-logo {
@@ -1439,5 +1376,24 @@ main #contact #contact-form textarea {
 main #contact #contact-form textarea {
   resize: none;
   height: 12rem;
+}
+
+footer {
+  height: 30vh;
+  width: 100%;
+  background: #231f20;
+}
+
+footer p {
+  color: #fff;
+  width: 15rem;
+  text-align: center;
+  padding: 3rem 0;
+  margin: 0 auto;
+}
+
+footer .social-media-links .social-link img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 /*# sourceMappingURL=index.css.map */
