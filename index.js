@@ -136,18 +136,20 @@ const createLanguageContainer = (src, key) => {
 const createExternalButton = (text, className, url) => {
   const button = createClassElement("a", className)
   button.setAttribute("href", url)
+  button.setAttribute("target", "_blank")
+  button.setAttribute("rel", "noreferrer noopenner")
   button.textContent = text
 
   return button
 }
 
 // ***** open card when clicked *****
-function openProjectCard(e) {
-  const cardClass = e.classList.value
+const openProjectCard = e => {
+  const cardClass = e.parentElement.classList.value
 
   cardClass.includes("--open")
-    ? e.classList.remove("project-card-wrapper--open")
-    : e.classList.add("project-card-wrapper--open")
+    ? e.parentElement.classList.remove("project-card-wrapper--open")
+    : e.parentElement.classList.add("project-card-wrapper--open")
 }
 
 // ***** create project cards *****
@@ -170,8 +172,9 @@ const createProjectCard = (
   const doubleDigit = index + 1 < 10 ? `0${index + 1}` : `${index + 1}`
 
   const wrapper = createClassElement("div", "project-card-wrapper")
-  wrapper.setAttribute("onclick", "openProjectCard(this); return false;")
+  // wrapper.setAttribute("onclick", "openProjectCard(this); return false;")
   const card = createClassElement("div", "project-card")
+  card.setAttribute("onclick", "openProjectCard(this); return false;")
   wrapper.appendChild(card)
   const number = createClassElement("div", "project-number", doubleDigit)
   card.appendChild(number)

@@ -5,6 +5,10 @@
           box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -810,7 +814,6 @@ header .main-nav ul, header .main-nav--open ul {
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   list-style-type: none;
-  margin-left: -1rem;
   z-index: 0;
 }
 
@@ -868,7 +871,6 @@ header .main-nav .social-media-links, header .main-nav--open .social-media-links
 }
 
 header .main-nav .social-media-links .social-link, header .main-nav--open .social-media-links .social-link {
-  margin-left: -2rem;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -901,6 +903,7 @@ main {
 main section {
   width: 100%;
   min-height: 100vh;
+  padding-top: 4.5rem;
 }
 
 main section .section-title {
@@ -941,6 +944,10 @@ main section .section-intro p {
   font-weight: 500;
 }
 
+main section .section-intro p a {
+  color: #ce3434;
+}
+
 main section:nth-of-type(3n) .section-title::after {
   background: #ce3434;
 }
@@ -957,7 +964,11 @@ main #about {
   padding-top: 2rem;
 }
 
-main #about .about-photo-grid {
+main #about .portfolio-intro-container {
+  min-height: 50vh;
+}
+
+main #about .portfolio-intro-container .about-photo-grid {
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -973,7 +984,7 @@ main #about .about-photo-grid {
   overflow: hidden;
 }
 
-main #about .about-photo-grid .photo {
+main #about .portfolio-intro-container .about-photo-grid .photo {
   position: absolute;
   top: -20%;
   left: 0;
@@ -983,7 +994,7 @@ main #about .about-photo-grid .photo {
           filter: saturate(0);
 }
 
-main #about .about-photo-grid .photo-block {
+main #about .portfolio-intro-container .about-photo-grid .photo-block {
   border: 3px solid #231f20;
   width: 100%;
   height: 100%;
@@ -992,44 +1003,44 @@ main #about .about-photo-grid .photo-block {
           transform-origin: center;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(1) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(1) {
   border-bottom: none;
   border-right: none;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(2) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(2) {
   border-right: none;
   border-bottom: none;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(3) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(3) {
   border-bottom: none;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(4) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(4) {
   border-right: none;
   border-bottom: none;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(5) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(5) {
   border-bottom: none;
   border-right: none;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(6) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(6) {
   border-right: none;
   border-bottom: none;
   background: #fff;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(7) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(7) {
   border-left: none;
   border-bottom: none;
   border-right: none;
   background: #fff;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(8) {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(8) {
   border-right: none;
 }
 
@@ -1075,7 +1086,7 @@ main #about .about-photo-grid .photo-block:nth-of-type(8) {
   }
 }
 
-main #about .about-photo-grid .photo-block .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block .flip-layer {
   width: 100%;
   height: 100%;
   font-size: 4rem;
@@ -1098,53 +1109,57 @@ main #about .about-photo-grid .photo-block .flip-layer {
           animation-fill-mode: ease;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(1) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(1) .flip-layer {
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(2) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(2) .flip-layer {
   -webkit-animation-duration: 3.2s;
           animation-duration: 3.2s;
   -webkit-animation-delay: 1.2s;
           animation-delay: 1.2s;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(3) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(3) .flip-layer {
   -webkit-animation-duration: 2.5s;
           animation-duration: 2.5s;
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(4) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(4) .flip-layer {
   -webkit-animation-duration: 2.8s;
           animation-duration: 2.8s;
   -webkit-animation-delay: 0.2s;
           animation-delay: 0.2s;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(5) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(5) .flip-layer {
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   -webkit-animation-delay: 1.3s;
           animation-delay: 1.3s;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(8) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(8) .flip-layer {
   -webkit-animation-duration: 2.7s;
           animation-duration: 2.7s;
   -webkit-animation-delay: 1.5s;
           animation-delay: 1.5s;
 }
 
-main #about .about-photo-grid .photo-block:nth-of-type(9) .flip-layer {
+main #about .portfolio-intro-container .about-photo-grid .photo-block:nth-of-type(9) .flip-layer {
   -webkit-animation-duration: 3.3s;
           animation-duration: 3.3s;
   -webkit-animation-delay: 0.8s;
           animation-delay: 0.8s;
+}
+
+main #about .section-intro:last-of-type p {
+  text-align: justify;
 }
 
 main #skills .skills-container {
@@ -1387,6 +1402,7 @@ main #project-cards-container .project-card-wrapper--open {
 
 main #project-cards-container .project-card-wrapper--open .project-card {
   width: 25%;
+  overflow: hidden;
 }
 
 main #project-cards-container .project-card-wrapper--open .project-card .project-number {

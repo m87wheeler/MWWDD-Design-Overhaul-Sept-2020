@@ -11,6 +11,10 @@ $blue: #0068aa;
 $yellow: #ffa520;
 $grey: #555;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -658,7 +662,6 @@ header {
       display: flex;
       flex-flow: column nowrap;
       list-style-type: none;
-      margin-left: -1rem;
       z-index: 0;
 
       li {
@@ -724,7 +727,6 @@ header {
       margin: 0 auto;
 
       .social-link {
-        margin-left: -2rem;
         align-self: center;
         justify-self: center;
 
@@ -755,6 +757,7 @@ main {
   section {
     width: 100%;
     min-height: 100vh;
+    padding-top: 4.5rem;
 
     .section-title {
       position: relative;
@@ -793,6 +796,10 @@ main {
         font-size: 1rem;
         line-height: 1.5em;
         font-weight: 500;
+
+        a {
+          color: $red;
+        }
       }
     }
 
@@ -822,142 +829,154 @@ main {
   #about {
     padding-top: 2rem;
 
-    .about-photo-grid {
-      position: relative;
-      display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      grid-template-columns: repeat(3, 1fr);
-      width: 17rem;
-      height: 20rem;
-      margin-left: 50%;
-      transform: translateX(-50%);
-      overflow: hidden;
+    .portfolio-intro-container {
+      min-height: 50vh;
 
-      .photo {
-        position: absolute;
-        top: -20%;
-        left: 0;
-        width: 100%;
-        z-index: -1;
-        filter: saturate(0);
-      }
+      .about-photo-grid {
+        position: relative;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        width: 17rem;
+        height: 20rem;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
 
-      .photo-block {
-        border: 3px solid $black;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        transform-origin: center;
-
-        &:nth-of-type(1) {
-          border-bottom: none;
-          border-right: none;
-        }
-        &:nth-of-type(2) {
-          border-right: none;
-          border-bottom: none;
-        }
-        &:nth-of-type(3) {
-          border-bottom: none;
-        }
-        &:nth-of-type(4) {
-          border-right: none;
-          border-bottom: none;
-        }
-        &:nth-of-type(5) {
-          border-bottom: none;
-          border-right: none;
-        }
-        &:nth-of-type(6) {
-          border-right: none;
-          border-bottom: none;
-          background: #fff;
-        }
-        &:nth-of-type(7) {
-          border-left: none;
-          border-bottom: none;
-          border-right: none;
-          background: #fff;
-        }
-        &:nth-of-type(8) {
-          border-right: none;
+        .photo {
+          position: absolute;
+          top: -20%;
+          left: 0;
+          width: 100%;
+          z-index: -1;
+          filter: saturate(0);
         }
 
-        @keyframes rotate-flip-layer {
-          0% {
-            transform: rotateY(0);
-          }
-          30% {
-            transform: rotateY(0);
-          }
-          70% {
-            transform: rotateY(180deg);
-          }
-          95% {
-          }
-          100% {
-            transform: rotateY(360deg);
-          }
-        }
-
-        .flip-layer {
+        .photo-block {
+          border: 3px solid $black;
           width: 100%;
           height: 100%;
-          font-size: 4rem;
-          line-height: 6.4rem;
-          font-weight: 600;
-          text-align: center;
-          background: $red;
-          color: $white;
-          backface-visibility: hidden;
+          background: transparent;
           transform-origin: center;
-          transform: rotateY(0);
-          animation-name: rotate-flip-layer;
-          animation-iteration-count: infinite;
-          animation-fill-mode: ease;
-        }
 
-        &:nth-of-type(1) {
+          &:nth-of-type(1) {
+            border-bottom: none;
+            border-right: none;
+          }
+          &:nth-of-type(2) {
+            border-right: none;
+            border-bottom: none;
+          }
+          &:nth-of-type(3) {
+            border-bottom: none;
+          }
+          &:nth-of-type(4) {
+            border-right: none;
+            border-bottom: none;
+          }
+          &:nth-of-type(5) {
+            border-bottom: none;
+            border-right: none;
+          }
+          &:nth-of-type(6) {
+            border-right: none;
+            border-bottom: none;
+            background: #fff;
+          }
+          &:nth-of-type(7) {
+            border-left: none;
+            border-bottom: none;
+            border-right: none;
+            background: #fff;
+          }
+          &:nth-of-type(8) {
+            border-right: none;
+          }
+
+          @keyframes rotate-flip-layer {
+            0% {
+              transform: rotateY(0);
+            }
+            30% {
+              transform: rotateY(0);
+            }
+            70% {
+              transform: rotateY(180deg);
+            }
+            95% {
+            }
+            100% {
+              transform: rotateY(360deg);
+            }
+          }
+
           .flip-layer {
-            animation-duration: 3s;
-            animation-delay: 1s;
+            width: 100%;
+            height: 100%;
+            font-size: 4rem;
+            line-height: 6.4rem;
+            font-weight: 600;
+            text-align: center;
+            background: $red;
+            color: $white;
+            backface-visibility: hidden;
+            transform-origin: center;
+            transform: rotateY(0);
+            animation-name: rotate-flip-layer;
+            animation-iteration-count: infinite;
+            animation-fill-mode: ease;
+          }
+
+          &:nth-of-type(1) {
+            .flip-layer {
+              animation-duration: 3s;
+              animation-delay: 1s;
+            }
+          }
+          &:nth-of-type(2) {
+            .flip-layer {
+              animation-duration: 3.2s;
+              animation-delay: 1.2s;
+            }
+          }
+          &:nth-of-type(3) {
+            .flip-layer {
+              animation-duration: 2.5s;
+              animation-delay: 0.5s;
+            }
+          }
+          &:nth-of-type(4) {
+            .flip-layer {
+              animation-duration: 2.8s;
+              animation-delay: 0.2s;
+            }
+          }
+          &:nth-of-type(5) {
+            .flip-layer {
+              animation-duration: 3s;
+              animation-delay: 1.3s;
+            }
+          }
+          &:nth-of-type(8) {
+            .flip-layer {
+              animation-duration: 2.7s;
+              animation-delay: 1.5s;
+            }
+          }
+          &:nth-of-type(9) {
+            .flip-layer {
+              animation-duration: 3.3s;
+              animation-delay: 0.8s;
+            }
           }
         }
-        &:nth-of-type(2) {
-          .flip-layer {
-            animation-duration: 3.2s;
-            animation-delay: 1.2s;
-          }
-        }
-        &:nth-of-type(3) {
-          .flip-layer {
-            animation-duration: 2.5s;
-            animation-delay: 0.5s;
-          }
-        }
-        &:nth-of-type(4) {
-          .flip-layer {
-            animation-duration: 2.8s;
-            animation-delay: 0.2s;
-          }
-        }
-        &:nth-of-type(5) {
-          .flip-layer {
-            animation-duration: 3s;
-            animation-delay: 1.3s;
-          }
-        }
-        &:nth-of-type(8) {
-          .flip-layer {
-            animation-duration: 2.7s;
-            animation-delay: 1.5s;
-          }
-        }
-        &:nth-of-type(9) {
-          .flip-layer {
-            animation-duration: 3.3s;
-            animation-delay: 0.8s;
-          }
+      }
+    }
+
+    .section-intro {
+      &:last-of-type {
+        p {
+          text-align: justify;
         }
       }
     }
@@ -1175,6 +1194,7 @@ main {
 
         .project-card {
           width: 25%;
+          overflow: hidden;
 
           .project-number {
             font-size: 2rem;
