@@ -591,6 +591,10 @@ header {
         }
       }
     }
+
+    @media (min-width: 1280px) {
+      display: none;
+    }
   }
 
   .main-nav {
@@ -681,6 +685,40 @@ header {
       width: 10rem;
       margin: 0 auto;
     }
+
+    @media (min-width: 1280px) {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 4rem;
+      padding: 0;
+      display: block;
+      z-index: 5;
+
+      .social-media-links {
+        display: none;
+      }
+
+      ul {
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+
+        li {
+          padding-top: 3rem;
+          height: auto;
+
+          a {
+            line-height: 1rem;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1280px) {
+      width: 40%;
+      left: 60%;
+    }
   }
 }
 
@@ -720,6 +758,26 @@ main {
         border: 3px solid $black;
         border-bottom: none;
       }
+
+      @media (min-width: 700px) {
+        padding-left: calc(20% + 2rem);
+
+        &::after {
+          left: calc(20% + 2.5rem);
+        }
+      }
+
+      @media (min-width: 1280px) {
+        &::after {
+          left: 40%;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        &::after {
+          left: 50%;
+        }
+      }
     }
 
     .section-intro {
@@ -734,6 +792,11 @@ main {
         a {
           color: $red;
         }
+      }
+
+      @media (min-width: 700px) {
+        width: 60%;
+        margin-left: 20%;
       }
     }
 
@@ -914,6 +977,34 @@ main {
         }
       }
     }
+
+    @media (min-width: 700px) and (min-height: 980px) {
+      .portfolio-intro-container {
+        min-height: 0;
+        height: 22rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .portfolio-intro-container {
+        min-height: 35rem;
+        height: 60vh;
+
+        .about-photo-grid {
+          width: 25.5rem;
+          height: 30rem;
+          margin-bottom: 4rem;
+        }
+      }
+
+      .section-intro {
+        &:first-of-type {
+          width: 40%;
+          margin-left: 30%;
+          padding-bottom: 3rem;
+        }
+      }
+    }
   }
 
   #skills {
@@ -938,6 +1029,14 @@ main {
         p {
           text-align: center;
           color: $grey;
+        }
+      }
+    }
+
+    @media (min-width: 700px) {
+      .skills-container {
+        .skill-container {
+          width: 30%;
         }
       }
     }
@@ -1017,7 +1116,7 @@ main {
         .project-title {
           width: 9rem;
           white-space: normal;
-          padding-right: 100%;
+          padding-right: 20%;
           color: $white;
           font-size: 0.9rem;
           font-weight: 600;
@@ -1144,6 +1243,31 @@ main {
         }
       }
     }
+
+    @media (min-width: 700px) and (min-height: 980px) {
+      height: 70vh;
+
+      .project-card-wrapper {
+        height: calc(70vh - 5rem);
+      }
+    }
+
+    @media (min-width: 1280px) {
+      height: 80vh;
+      .project-card-wrapper {
+        margin-top: 5vh;
+        width: 30%;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      width: 70%;
+      margin-left: 15%;
+
+      .project-card-wrapper {
+        width: 40%;
+      }
+    }
   }
 
   #contact {
@@ -1166,6 +1290,11 @@ main {
       textarea {
         resize: none;
         height: 12rem;
+      }
+
+      @media (min-width: 700px) {
+        width: 60%;
+        margin-left: 20%;
       }
     }
   }

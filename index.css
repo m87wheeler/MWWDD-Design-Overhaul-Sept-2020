@@ -749,6 +749,12 @@ header .hamburger-wrapper .hamburger--open span:nth-of-type(4) {
   margin-left: 0.4rem;
 }
 
+@media (min-width: 1280px) {
+  header .hamburger-wrapper {
+    display: none;
+  }
+}
+
 header .main-nav, header .main-nav--open {
   position: fixed;
   top: -150vh;
@@ -832,6 +838,45 @@ header .main-nav .short-logo, header .main-nav--open .short-logo {
   margin: 0 auto;
 }
 
+@media (min-width: 1280px) {
+  header .main-nav, header .main-nav--open {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 4rem;
+    padding: 0;
+    display: block;
+    z-index: 5;
+  }
+  header .main-nav .social-media-links, header .main-nav--open .social-media-links {
+    display: none;
+  }
+  header .main-nav ul, header .main-nav--open ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  header .main-nav ul li, header .main-nav--open ul li {
+    padding-top: 3rem;
+    height: auto;
+  }
+  header .main-nav ul li a, header .main-nav--open ul li a {
+    line-height: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  header .main-nav, header .main-nav--open {
+    width: 40%;
+    left: 60%;
+  }
+}
+
 main {
   width: 100%;
   height: auto;
@@ -872,6 +917,27 @@ main section .section-title::after {
   border-bottom: none;
 }
 
+@media (min-width: 700px) {
+  main section .section-title {
+    padding-left: calc(20% + 2rem);
+  }
+  main section .section-title::after {
+    left: calc(20% + 2.5rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  main section .section-title::after {
+    left: 40%;
+  }
+}
+
+@media (min-width: 1600px) {
+  main section .section-title::after {
+    left: 50%;
+  }
+}
+
 main section .section-intro p {
   width: calc(100% - 4rem);
   margin: 1rem 2rem;
@@ -883,6 +949,13 @@ main section .section-intro p {
 
 main section .section-intro p a {
   color: #ce3434;
+}
+
+@media (min-width: 700px) {
+  main section .section-intro {
+    width: 60%;
+    margin-left: 20%;
+  }
 }
 
 main section:nth-of-type(3n) .section-title::after {
@@ -1099,6 +1172,30 @@ main #about .section-intro:last-of-type p {
   text-align: justify;
 }
 
+@media (min-width: 700px) and (min-height: 980px) {
+  main #about .portfolio-intro-container {
+    min-height: 0;
+    height: 22rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  main #about .portfolio-intro-container {
+    min-height: 35rem;
+    height: 60vh;
+  }
+  main #about .portfolio-intro-container .about-photo-grid {
+    width: 25.5rem;
+    height: 30rem;
+    margin-bottom: 4rem;
+  }
+  main #about .section-intro:first-of-type {
+    width: 40%;
+    margin-left: 30%;
+    padding-bottom: 3rem;
+  }
+}
+
 main #skills .skills-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1132,6 +1229,12 @@ main #skills .skills-container .skill-container img {
 main #skills .skills-container .skill-container p {
   text-align: center;
   color: #555;
+}
+
+@media (min-width: 700px) {
+  main #skills .skills-container .skill-container {
+    width: 30%;
+  }
 }
 
 main #project-cards-container {
@@ -1212,7 +1315,7 @@ main #project-cards-container .project-card-wrapper .project-card .project-numbe
 main #project-cards-container .project-card-wrapper .project-card .project-title, main #project-cards-container .project-card-wrapper--open .project-card .project-title {
   width: 9rem;
   white-space: normal;
-  padding-right: 100%;
+  padding-right: 20%;
   color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
@@ -1356,6 +1459,35 @@ main #project-cards-container .project-card-wrapper--open .project-card .project
   opacity: 0;
 }
 
+@media (min-width: 700px) and (min-height: 980px) {
+  main #project-cards-container {
+    height: 70vh;
+  }
+  main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+    height: calc(70vh - 5rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  main #project-cards-container {
+    height: 80vh;
+  }
+  main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+    margin-top: 5vh;
+    width: 30%;
+  }
+}
+
+@media (min-width: 1600px) {
+  main #project-cards-container {
+    width: 70%;
+    margin-left: 15%;
+  }
+  main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+    width: 40%;
+  }
+}
+
 main #contact #contact-form {
   position: relative;
   width: calc(100% - 2rem);
@@ -1376,6 +1508,13 @@ main #contact #contact-form textarea {
 main #contact #contact-form textarea {
   resize: none;
   height: 12rem;
+}
+
+@media (min-width: 700px) {
+  main #contact #contact-form {
+    width: 60%;
+    margin-left: 20%;
+  }
 }
 
 footer {
