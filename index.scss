@@ -105,6 +105,7 @@ body {
   padding: 0.75rem 1rem;
   margin: 0.25rem;
   overflow: hidden;
+  cursor: pointer;
 
   font-size: 0.9rem;
   font-weight: 600;
@@ -756,7 +757,7 @@ main {
 
   section {
     width: 100%;
-    min-height: 100vh;
+    min-height: 50vh;
     padding-top: 4.5rem;
 
     .section-title {
@@ -1027,7 +1028,6 @@ main {
       height: 80vh;
       margin: 0 0.5rem;
       overflow: hidden;
-      // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       transition: all 0.2s ease-in-out;
       cursor: pointer;
 
@@ -1209,6 +1209,30 @@ main {
             opacity: 0;
           }
         }
+      }
+    }
+  }
+
+  #contact {
+    #contact-form {
+      position: relative;
+      width: calc(100% - 2rem);
+      margin: 1rem;
+      padding: 1rem;
+
+      input,
+      textarea {
+        width: 100%;
+        border: 3px solid $black;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      textarea {
+        resize: none;
+        height: 12rem;
       }
     }
   }

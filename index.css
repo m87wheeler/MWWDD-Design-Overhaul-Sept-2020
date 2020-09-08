@@ -96,6 +96,7 @@ body {
   padding: 0.75rem 1rem;
   margin: 0.25rem;
   overflow: hidden;
+  cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -902,7 +903,7 @@ main {
 
 main section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   padding-top: 4.5rem;
 }
 
@@ -1417,5 +1418,27 @@ main #project-cards-container .project-card-wrapper--open .project-card .project
 
 main #project-cards-container .project-card-wrapper--open .project-card .project-type {
   opacity: 0;
+}
+
+main #contact #contact-form {
+  position: relative;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+main #contact #contact-form input,
+main #contact #contact-form textarea {
+  width: 100%;
+  border: 3px solid #231f20;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+main #contact #contact-form textarea {
+  resize: none;
+  height: 12rem;
 }
 /*# sourceMappingURL=index.css.map */
