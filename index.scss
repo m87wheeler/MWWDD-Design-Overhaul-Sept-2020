@@ -982,6 +982,14 @@ main {
       .portfolio-intro-container {
         min-height: 0;
         height: 22rem;
+
+        .about-photo-grid {
+          .photo-block {
+            .flip-layer {
+              line-height: 9.5rem;
+            }
+          }
+        }
       }
     }
 

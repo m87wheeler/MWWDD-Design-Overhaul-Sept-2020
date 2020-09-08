@@ -1177,6 +1177,9 @@ main #about .section-intro:last-of-type p {
     min-height: 0;
     height: 22rem;
   }
+  main #about .portfolio-intro-container .about-photo-grid .photo-block .flip-layer {
+    line-height: 9.5rem;
+  }
 }
 
 @media (min-width: 1280px) {
