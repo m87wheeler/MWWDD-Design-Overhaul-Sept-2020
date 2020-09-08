@@ -1,8 +1,3 @@
-// production only
-// window.onload = function () {
-//   localStorage.clear()
-// }
-
 // ***** window *****
 let windowDimensions = {
   width: window.innerWidth,
@@ -15,64 +10,6 @@ window.addEventListener(
       width: window.innerWidth,
       height: window.innerHeight,
     }
-  },
-  false
-)
-
-// ***** splash page run on first visit *****
-const SPLASH_PAGE = document.querySelector("#splash-page")
-const ANIMATION_WRAPPER = document.querySelector(
-  "#animated-logo-wrapper .animation-wrapper"
-)
-const ELEMS_TOP_BLOCK_FALL = document.querySelectorAll(".anim-top-block-fall")
-const ELEMS_BOTTOM_BLOCK_FALL = document.querySelectorAll(
-  ".anim-bottom-block-fall"
-)
-const LEFT_DIAMOND = document.querySelector(
-  "#animated-logo-wrapper .left-diamond"
-)
-const RIGHT_DIAMOND = document.querySelector(
-  "#animated-logo-wrapper .right-diamond"
-)
-const SPLASH_PAGE_MAIN_LOGO = document.querySelector("#splash-page .main-logo")
-
-// ***** function to add animations *****
-const animateOnLoad = () => {
-  ANIMATION_WRAPPER.style.animationName = "rotate-logo"
-  ELEMS_TOP_BLOCK_FALL.forEach(
-    elem => (elem.style.animationName = "top-block-fall")
-  )
-  ELEMS_BOTTOM_BLOCK_FALL.forEach(
-    elem => (elem.style.animationName = "bottom-block-fall")
-  )
-  LEFT_DIAMOND.style.animationName = "left-diamond-slide"
-  RIGHT_DIAMOND.style.animationName = "right-diamond-slide"
-  SPLASH_PAGE_MAIN_LOGO.style.animationName = "slide-up-and-color"
-}
-
-// ***** function to display splash page *****
-const showSplashPage = () => {
-  const visited = localStorage.getItem("Visited")
-  if (!visited) {
-    document.querySelector("#splash-page").style.display = "block"
-    animateOnLoad()
-    setTimeout(() => {
-      SPLASH_PAGE.style.opacity = "0"
-      setTimeout(() => {
-        SPLASH_PAGE.style.display = "none"
-      }, 1000)
-    }, 9000) // based on css animation length
-    localStorage.setItem("Visited", true)
-  } else {
-    SPLASH_PAGE.style.display = "none"
-  }
-}
-
-// ***** show splash page on first load *****
-window.addEventListener(
-  "load",
-  () => {
-    showSplashPage()
   },
   false
 )
@@ -241,7 +178,7 @@ const fetchProjectData = async url => {
   try {
     const res = await fetch(url)
     const data = await res.json()
-    data.objects.forEach((object, i) => {
+    await data.objects.forEach((object, i) => {
       const objectEntries = Object.entries(object.metadata)
         .filter(entry => entry[0].substr(0, 5) === "lang_")
         .filter(entry => entry[1].url !== null)
@@ -277,9 +214,7 @@ const arrangeProjectCards = () => {
 
 // ***** actions restricted until loading complete
 const isLoading = setInterval(() => {
-  if (projectDataLoading) {
-    console.log("Loading")
-  } else {
+  if (!projectDataLoading) {
     console.log("Finished Loading")
     clearInterval(isLoading)
 

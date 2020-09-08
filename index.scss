@@ -208,7 +208,6 @@ body {
 // ***** SPLASH PAGE *****
 
 #splash-page {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -978,10 +977,21 @@ main {
       }
     }
 
-    @media (min-width: 700px) and (min-height: 980px) {
+    @media (min-width: 700px) and (min-height: 980px) and (max-width: 1024px) {
       .portfolio-intro-container {
-        min-height: 0;
-        height: 22rem;
+        min-height: 32rem;
+        padding-bottom: 5rem;
+
+        .about-photo-grid {
+          height: 30rem;
+          width: 25rem;
+
+          .photo-block {
+            .flip-layer {
+              line-height: 9.5rem;
+            }
+          }
+        }
       }
     }
 

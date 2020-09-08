@@ -216,7 +216,6 @@ body {
 }
 
 #splash-page {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -1172,10 +1171,17 @@ main #about .section-intro:last-of-type p {
   text-align: justify;
 }
 
-@media (min-width: 700px) and (min-height: 980px) {
+@media (min-width: 700px) and (min-height: 980px) and (max-width: 1024px) {
   main #about .portfolio-intro-container {
-    min-height: 0;
-    height: 22rem;
+    min-height: 32rem;
+    padding-bottom: 5rem;
+  }
+  main #about .portfolio-intro-container .about-photo-grid {
+    height: 30rem;
+    width: 25rem;
+  }
+  main #about .portfolio-intro-container .about-photo-grid .photo-block .flip-layer {
+    line-height: 9.5rem;
   }
 }
 
