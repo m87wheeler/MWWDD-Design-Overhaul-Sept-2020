@@ -1418,8 +1418,4 @@ main #project-cards-container .project-card-wrapper--open .project-card .project
 main #project-cards-container .project-card-wrapper--open .project-card .project-type {
   opacity: 0;
 }
-
-main #blank {
-  height: 100vh;
-}
 /*# sourceMappingURL=index.css.map */
