@@ -236,6 +236,7 @@ const isLoading = setInterval(() => {
 
     arrangeProjectCards()
 
+    // ***** flip cards on scroll *****
     document.querySelector("#project-cards-container").addEventListener(
       "scroll",
       () => {
@@ -250,6 +251,7 @@ const isLoading = setInterval(() => {
       false
     )
   }
+  PROJECT_CARDS_ARRAY[0].style.transform = "rotateY(0)"
 }, 500)
 
 // // ***** rotate cards when in view *****

@@ -32,7 +32,24 @@ body {
   background-color: $white;
   color: $black;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif; /* not imported yet */
+  font-family: "Montserrat", sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  ul,
+  li,
+  div,
+  input,
+  button,
+  span {
+    font-family: "Montserrat", sans-serif;
+  }
 }
 
 // ***** GENERIC STYLING *****
@@ -1049,7 +1066,7 @@ main {
 
         .about-photo-grid {
           width: 25.5rem;
-          height: 30rem;
+          height: 31rem;
           margin-bottom: 4rem;
 
           .photo-block {

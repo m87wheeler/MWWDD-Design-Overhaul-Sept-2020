@@ -26,7 +26,23 @@ body {
   color: #231f20;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
-  /* not imported yet */
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p,
+body a,
+body ul,
+body li,
+body div,
+body input,
+body button,
+body span {
+  font-family: "Montserrat", sans-serif;
 }
 
 .main-logo {
@@ -1265,7 +1281,7 @@ main #about .section-intro:last-of-type p {
   }
   main #about .portfolio-intro-container .about-photo-grid {
     width: 25.5rem;
-    height: 30rem;
+    height: 31rem;
     margin-bottom: 4rem;
   }
   main #about .portfolio-intro-container .about-photo-grid .photo-block .flip-layer {
