@@ -1374,6 +1374,10 @@ main {
         font-family: "Montserrat", sans-serif;
       }
 
+      input[type="submit"] {
+        width: 8rem;
+      }
+
       textarea {
         resize: none;
         height: 12rem;

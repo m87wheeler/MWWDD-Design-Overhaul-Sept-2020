@@ -1611,6 +1611,10 @@ main #contact #contact-form textarea {
   font-family: "Montserrat", sans-serif;
 }
 
+main #contact #contact-form input[type="submit"] {
+  width: 8rem;
+}
+
 main #contact #contact-form textarea {
   resize: none;
   height: 12rem;
