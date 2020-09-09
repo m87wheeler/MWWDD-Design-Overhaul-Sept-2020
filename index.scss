@@ -1051,6 +1051,12 @@ main {
           width: 25.5rem;
           height: 30rem;
           margin-bottom: 4rem;
+
+          .photo-block {
+            .flip-layer {
+              line-height: 10rem;
+            }
+          }
         }
       }
 

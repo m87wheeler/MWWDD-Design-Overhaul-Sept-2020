@@ -1268,6 +1268,9 @@ main #about .section-intro:last-of-type p {
     height: 30rem;
     margin-bottom: 4rem;
   }
+  main #about .portfolio-intro-container .about-photo-grid .photo-block .flip-layer {
+    line-height: 10rem;
+  }
   main #about .section-intro:first-of-type {
     width: 40%;
     margin-left: 30%;
