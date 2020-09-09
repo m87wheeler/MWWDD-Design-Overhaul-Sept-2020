@@ -39,7 +39,6 @@ HAMBURGER.addEventListener(
 
 // ***** close nav when link selected *****
 const NAV_LINKS = document.querySelectorAll("#main-nav ul li")
-console.log(NAV_LINKS)
 NAV_LINKS.forEach(a => {
   a.addEventListener(
     "click",

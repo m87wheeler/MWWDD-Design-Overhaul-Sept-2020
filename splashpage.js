@@ -1,4 +1,4 @@
-const enableSplash = false // for production
+const enableSplash = true // for production
 
 const SPLASH_PAGE = document.querySelector("#splash-page")
 const ANIMATION_WRAPPER = document.querySelector(
@@ -55,4 +55,11 @@ const playSplashPage = bool => {
     SPLASH_PAGE.style.display = "none"
   }
 }
-playSplashPage(enableSplash)
+
+// ***** session storage *****
+if (!sessionStorage.getItem("visited")) {
+  playSplashPage(enableSplash)
+  sessionStorage.setItem("visited", true)
+} else {
+  SPLASH_PAGE.style.display = "none"
+}
