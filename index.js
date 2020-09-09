@@ -37,6 +37,21 @@ HAMBURGER.addEventListener(
   false
 )
 
+// ***** close nav when link selected *****
+const NAV_LINKS = document.querySelectorAll("#main-nav ul li")
+console.log(NAV_LINKS)
+NAV_LINKS.forEach(a => {
+  a.addEventListener(
+    "click",
+    () => {
+      HAMBURGER.classList.replace("hamburger--open", "hamburger")
+      MAIN_NAV.classList.replace("main-nav--open", "main-nav")
+      navIsOpen = false
+    },
+    false
+  )
+})
+
 // ***** create element with class *****
 const createClassElement = (type, className, text) => {
   const element = document.createElement(type)
@@ -172,6 +187,7 @@ const createProjectCard = (
 
 // ***** fetch Project Cards data from CosmicJS *****
 let projectDataLoading = true
+const LOADING_SPINNER = document.querySelector("#spinner-container")
 
 const projectData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=projects&read_key=N6C2ydBXJRnJGr5xKPQfW16ea2qANsnZoNgLzW5hXvAUIjN8FY&limit=20&props=slug,title,content,metadata,`
 const fetchProjectData = async url => {
@@ -195,6 +211,7 @@ const fetchProjectData = async url => {
         object.metadata.github_url
       )
 
+      LOADING_SPINNER.style.display = "none"
       projectDataLoading = false
     })
   } catch (err) {
@@ -215,7 +232,6 @@ const arrangeProjectCards = () => {
 // ***** actions restricted until loading complete
 const isLoading = setInterval(() => {
   if (!projectDataLoading) {
-    console.log("Finished Loading")
     clearInterval(isLoading)
 
     arrangeProjectCards()

@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+$white: #fff;
+$black: #231f20;
+$red: #ce3434;
+$blue: #0068aa;
+$yellow: #ffa520;
+$grey: #555;
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    background: $red;
+  }
+  4% {
+    background: $yellow;
+  }
+  33% {
+    background: $yellow;
+  }
+  39% {
+    background: $blue;
+  }
+  66% {
+    background: $blue;
+  }
+  72% {
+    background: $red;
+  }
+  100% {
+    background: $red;
+  }
+}
+
+// .spinner-container {
+//   position: absolute;
+//   width: 40rem;
+//   height: 40rem;
+
+//   .spinner-border {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 40rem;
+//     height: 40rem;
+//     border: 5rem solid $black;
+//     border-radius: 100%;
+
+//     .spinner-arm {
+//       position: relative;
+//       top: 0;
+//       left: 10rem;
+//       width: 10rem;
+//       height: 30rem;
+//       transform-origin: center;
+//       transform: rotate(20deg);
+//       animation: rotate 2s infinite linear;
+
+//       .spinner-ball {
+//         position: absolute;
+//         top: 2rem;
+//         left: 0;
+//         width: 10rem;
+//         height: 10rem;
+//         border-radius: 100%;
+//         background: $yellow;
+//         animation: color-change 6s infinite linear;
+//       }
+//     }
+//   }
+// }
+
+#spinner-container {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+
+  .spinner-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5rem;
+    height: 5rem;
+    border: 0.5rem solid $black;
+    border-radius: 100%;
+
+    .spinner-arm {
+      position: relative;
+      top: 0;
+      left: 1.5rem;
+      width: 1rem;
+      height: 4rem;
+      transform-origin: center;
+      transform: rotate(20deg);
+      animation: rotate 2s infinite linear;
+
+      .spinner-ball {
+        position: absolute;
+        top: 0.25rem;
+        left: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 100%;
+        background: $yellow;
+        animation: color-change 6s infinite linear;
+      }
+    }
+  }
+}

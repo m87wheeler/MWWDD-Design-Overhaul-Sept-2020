@@ -15,6 +15,16 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -171,7 +181,7 @@ body {
   }
 }
 
-@keyframes spinner-rotate {
+@keyframes rotate {
   from {
     transform: rotate(0);
   }
@@ -180,27 +190,64 @@ body {
   }
 }
 
+@keyframes color-change {
+  0% {
+    background: $yellow;
+  }
+  4% {
+    background: $yellow;
+  }
+  33% {
+    background: $blue;
+  }
+  39% {
+    background: $blue;
+  }
+  66% {
+    background: $red;
+  }
+  72% {
+    background: $red;
+  }
+  100% {
+    background: $yellow;
+  }
+}
+
 .spinner-wrapper {
-  position: relative;
-  width: 102px;
-  height: 102px;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
 
-  img {
+  .spinner-border {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 5rem;
+    height: 5rem;
+    border: 0.5rem solid $black;
+    border-radius: 100%;
 
-    &:first-of-type {
-      top: 1px;
-      left: 1px;
-      width: 100px;
-      height: 100px;
-    }
-
-    &:last-of-type {
+    .spinner-arm {
+      position: relative;
       top: 0;
-      left: 0;
-      width: 102px;
-      height: 102px;
-      animation: spinner-rotate 2s infinite linear;
+      left: 1.5rem;
+      width: 1rem;
+      height: 4rem;
+      transform-origin: center;
+      transform: rotate(20deg);
+      animation: rotate 2s infinite linear;
+
+      .spinner-ball {
+        position: absolute;
+        top: 0.25rem;
+        left: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 100%;
+        background: $yellow;
+        animation: color-change 6s infinite linear;
+      }
     }
   }
 }
@@ -1254,6 +1301,13 @@ main {
       }
     }
 
+    #spinner-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
     @media (min-width: 700px) and (min-height: 980px) {
       height: 70vh;
 
@@ -1305,6 +1359,11 @@ main {
       @media (min-width: 700px) {
         width: 60%;
         margin-left: 20%;
+      }
+
+      @media (min-width: 1400px) {
+        width: 40%;
+        margin-left: 30%;
       }
     }
   }

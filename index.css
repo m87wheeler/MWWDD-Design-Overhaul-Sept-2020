@@ -9,6 +9,15 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -167,7 +176,7 @@ body {
   opacity: 0.8;
 }
 
-@-webkit-keyframes spinner-rotate {
+@-webkit-keyframes rotate {
   from {
     -webkit-transform: rotate(0);
             transform: rotate(0);
@@ -178,7 +187,7 @@ body {
   }
 }
 
-@keyframes spinner-rotate {
+@keyframes rotate {
   from {
     -webkit-transform: rotate(0);
             transform: rotate(0);
@@ -186,33 +195,97 @@ body {
   to {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    background: #ffa520;
+  }
+  4% {
+    background: #ffa520;
+  }
+  33% {
+    background: #0068aa;
+  }
+  39% {
+    background: #0068aa;
+  }
+  66% {
+    background: #ce3434;
+  }
+  72% {
+    background: #ce3434;
+  }
+  100% {
+    background: #ffa520;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    background: #ffa520;
+  }
+  4% {
+    background: #ffa520;
+  }
+  33% {
+    background: #0068aa;
+  }
+  39% {
+    background: #0068aa;
+  }
+  66% {
+    background: #ce3434;
+  }
+  72% {
+    background: #ce3434;
+  }
+  100% {
+    background: #ffa520;
   }
 }
 
 .spinner-wrapper {
-  position: relative;
-  width: 102px;
-  height: 102px;
-}
-
-.spinner-wrapper img {
   position: absolute;
+  width: 5rem;
+  height: 5rem;
 }
 
-.spinner-wrapper img:first-of-type {
-  top: 1px;
-  left: 1px;
-  width: 100px;
-  height: 100px;
-}
-
-.spinner-wrapper img:last-of-type {
+.spinner-wrapper .spinner-border {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 102px;
-  height: 102px;
-  -webkit-animation: spinner-rotate 2s infinite linear;
-          animation: spinner-rotate 2s infinite linear;
+  width: 5rem;
+  height: 5rem;
+  border: 0.5rem solid #231f20;
+  border-radius: 100%;
+}
+
+.spinner-wrapper .spinner-border .spinner-arm {
+  position: relative;
+  top: 0;
+  left: 1.5rem;
+  width: 1rem;
+  height: 4rem;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+  -webkit-animation: rotate 2s infinite linear;
+          animation: rotate 2s infinite linear;
+}
+
+.spinner-wrapper .spinner-border .spinner-arm .spinner-ball {
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  background: #ffa520;
+  -webkit-animation: color-change 6s infinite linear;
+          animation: color-change 6s infinite linear;
 }
 
 #splash-page {
@@ -1465,6 +1538,14 @@ main #project-cards-container .project-card-wrapper--open .project-card .project
   opacity: 0;
 }
 
+main #project-cards-container #spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
 @media (min-width: 700px) and (min-height: 980px) {
   main #project-cards-container {
     height: 70vh;
@@ -1520,6 +1601,13 @@ main #contact #contact-form textarea {
   main #contact #contact-form {
     width: 60%;
     margin-left: 20%;
+  }
+}
+
+@media (min-width: 1400px) {
+  main #contact #contact-form {
+    width: 40%;
+    margin-left: 30%;
   }
 }
 
