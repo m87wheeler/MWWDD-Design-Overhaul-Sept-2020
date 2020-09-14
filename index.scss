@@ -26,13 +26,13 @@ body {
 }
 
 body {
-  width: 100%;
-  min-height: 100vh;
-  height: auto;
   background-color: $white;
   color: $black;
-  font-size: 16px;
   font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
 
   h1,
   h2,
@@ -55,9 +55,9 @@ body {
 // ***** GENERIC STYLING *****
 
 .main-logo {
-  position: relative;
   display: inline-block;
   font-size: 1.5rem;
+  position: relative;
 
   a {
     color: $black;
@@ -65,32 +65,32 @@ body {
 
     .first-line,
     .second-line {
-      font-weight: 600;
       display: flex;
       flex-flow: row nowrap;
+      font-weight: 600;
 
       span {
         display: inline-block;
         font-size: 1em;
-        width: 1.25em;
         height: 0.9em;
-        text-align: center;
         margin-bottom: 0.1em;
+        text-align: center;
+        width: 1.25em;
 
         .triangle {
-          width: 0;
-          height: 0;
+          border-bottom: 0.75em solid $yellow;
           border-left: 0.45em solid transparent;
           border-right: 0.45em solid transparent;
-          border-bottom: 0.75em solid $yellow;
+          height: 0;
           margin: 0.2em auto 0;
+          width: 0;
         }
 
         .rectangle {
-          width: 0.4em;
-          height: 0.75em;
           background: $blue;
+          height: 0.75em;
           margin: 0.2em auto 0;
+          width: 0.4em;
         }
       }
     }
@@ -98,9 +98,9 @@ body {
     .second-line {
       span {
         .square {
-          width: 0.75em;
           height: 0.75em;
           margin: 0.2em auto 0;
+          width: 0.75em;
         }
 
         &:nth-of-type(3) {
@@ -126,41 +126,39 @@ body {
 }
 
 .button {
-  position: relative;
-  display: inline-block;
-  width: 8rem;
-  padding: 0.75rem 1rem;
-  margin: 0.25rem;
-  overflow: hidden;
-  cursor: pointer;
-
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  text-align: center;
-  text-decoration: none;
-  color: $white;
-
   background: $black;
   border: 3px solid $black;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0.25rem;
+  overflow: hidden;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
   transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+  width: 8rem;
+  position: relative;
 
   &:hover {
-    color: $black;
     background: $white;
+    color: $black;
   }
 
   &--secondary {
     @extend .button;
-    background: $white;
     color: $black;
+    background: $white;
 
     &:hover {
-      background: $black;
       color: $white;
+      background: $black;
     }
   }
 
@@ -170,17 +168,17 @@ body {
     border: 3px solid $red;
 
     &:hover {
-      background: $white;
       color: $red;
+      background: $white;
     }
   }
 }
 
 .social-media-links {
-  width: 20rem;
   display: flex;
   justify-content: space-evenly;
   margin: 0 auto;
+  width: 20rem;
 
   .social-link {
     align-self: center;
@@ -188,8 +186,8 @@ body {
 
     img {
       opacity: 1;
-      width: 2.5rem;
       transition: opacity 0.2s ease-in-out;
+      width: 2.5rem;
 
       &:hover {
         opacity: 0.8;
@@ -232,38 +230,38 @@ body {
 }
 
 .spinner-wrapper {
+  height: 5rem;
   position: absolute;
   width: 5rem;
-  height: 5rem;
 
   .spinner-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5rem;
-    height: 5rem;
     border: 0.5rem solid $black;
     border-radius: 100%;
+    height: 5rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 5rem;
 
     .spinner-arm {
+      animation: rotate 2s infinite linear;
+      height: 4rem;
+      left: 1.5rem;
       position: relative;
       top: 0;
-      left: 1.5rem;
-      width: 1rem;
-      height: 4rem;
       transform-origin: center;
       transform: rotate(20deg);
-      animation: rotate 2s infinite linear;
+      width: 1rem;
 
       .spinner-ball {
+        animation: color-change 6s infinite linear;
+        background: $yellow;
+        border-radius: 100%;
+        height: 1.5rem;
+        left: 0;
         position: absolute;
         top: 0.25rem;
-        left: 0;
         width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 100%;
-        background: $yellow;
-        animation: color-change 6s infinite linear;
       }
     }
   }
@@ -272,28 +270,28 @@ body {
 // ***** SPLASH PAGE *****
 
 #splash-page {
+  background: $white;
+  height: 100vh;
+  left: 0;
+  opacity: 1;
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: $white;
-  opacity: 1;
   transition: opacity 1s ease;
+  width: 100%;
   z-index: 20;
 
   @keyframes top-block-fall {
     0% {
-      top: -196.005px;
       opacity: 0;
+      top: -196.005px;
     }
     50% {
-      top: 10px;
       opacity: 1;
+      top: 10px;
     }
     100% {
-      top: 0;
       opacity: 1;
+      top: 0;
     }
   }
 
@@ -314,23 +312,23 @@ body {
 
   @keyframes left-diamond-slide {
     0% {
-      top: 350px;
       left: 66.29px;
+      top: 350px;
     }
     100% {
-      top: 56px; // original 56.11px
       left: 66.5px; // original 66.59px;
+      top: 56px; // original 56.11px
     }
   }
 
   @keyframes right-diamond-slide {
     0% {
-      top: -350px;
       left: 199.901px;
+      top: -350px;
     }
     100% {
-      top: 12.048px; // original 12.048px;
       left: 199.15px;
+      top: 12.048px; // original 12.048px;
     }
   }
 
@@ -356,154 +354,154 @@ body {
   }
 
   #animated-logo-wrapper {
+    height: 400px;
+    left: 50%;
+    overflow: hidden;
     position: absolute;
     top: 30%;
-    left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 400px;
-    height: 400px;
     z-index: 1;
-    overflow: hidden;
 
     .animation-wrapper {
-      position: absolute;
-      width: 300px;
+      animation-delay: 5.25s;
+      animation-duration: 1.5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      // animation-name: rotate-logo;
+      animation-timing-function: ease-out;
       height: 103.995px;
       margin: 196.005px 50px 0;
+      position: absolute;
       transform: rotate(0);
-      // animation-name: rotate-logo;
-      animation-duration: 1.5s;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-      animation-timing-function: ease-out;
-      animation-delay: 5.25s;
+      width: 300px;
 
       .logo-black-uprights {
         div {
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-iteration-count: 1;
+          // animation-name: top-block-fall;
+          background: $black;
+          height: 103.995px;
+          opacity: 0;
           position: absolute;
           top: -196.005px;
-          opacity: 0;
           width: 34.799px;
-          height: 103.995px;
-          background: $black;
           z-index: 3;
-          // animation-name: top-block-fall;
-          animation-duration: 1s;
-          animation-iteration-count: 1;
-          animation-fill-mode: forwards;
 
           &:nth-of-type(1) {
             left: 0;
           }
 
           &:nth-of-type(2) {
-            left: 132.601px;
             animation-delay: 0.5s;
+            left: 132.601px;
           }
 
           &:nth-of-type(3) {
-            left: 265.201px;
             animation-delay: 1s;
+            left: 265.201px;
           }
         }
       }
 
       .logo-angles-ne {
         div {
-          position: absolute;
-          width: 34.799px;
           height: 69.196px;
+          position: absolute;
           transform-origin: top left;
           transform: rotate(45deg);
+          width: 34.799px;
 
           &:nth-of-type(1) {
-            left: 132.601px;
-            top: -196.005px;
-            opacity: 0;
-            background: $red;
-            // animation-name: top-block-fall;
-            animation-duration: 1s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
             animation-delay: 2.75s;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            // animation-name: top-block-fall;
+            background: $red;
+            left: 132.601px;
+            opacity: 0;
+            top: -196.005px;
           }
 
           &:nth-of-type(2) {
-            left: 191.694px;
+            animation-delay: 3s;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            // animation-name: bottom-block-fall;
+            background: $yellow;
             bottom: 196.005px;
             opacity: 0;
-            background: $yellow;
-            // animation-name: bottom-block-fall;
-            animation-duration: 1s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-            animation-delay: 3s;
+            left: 191.694px;
           }
         }
       }
 
       .logo-angles-nw {
         div {
-          position: absolute;
-          width: 34.799px;
+          background: $blue;
           height: 69.196px;
           transform-origin: top right;
           transform: rotate(-45deg);
-          background: $blue;
+          width: 34.799px;
+          position: absolute;
 
           &:nth-of-type(1) {
-            left: 0.5; // 0
-            top: -196.5px; // -196.005px
-            opacity: 0;
-            // animation-name: top-block-fall;
-            animation-duration: 1s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
             animation-delay: 2.5s;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            // animation-name: top-block-fall;
+            left: 0.5px; // 0
+            opacity: 0;
+            top: -196.5px; // -196.005px
           }
 
           &:nth-of-type(2) {
-            left: 206.127px;
-            bottom: 196.005px;
-            opacity: 0;
-            // animation-name: bottom-block-fall;
-            animation-duration: 1s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
             animation-delay: 3.25s;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            // animation-name: bottom-block-fall;
+            bottom: 196.005px;
+            left: 206.127px;
+            opacity: 0;
           }
         }
       }
 
       .logo-diamonds {
         div {
-          position: absolute;
-          width: 34.799px;
+          animation-timing-function: linear;
           height: 34.799px;
+          position: absolute;
           transform-origin: center;
           transform: rotate(45deg);
-          animation-timing-function: linear;
+          width: 34.799px;
 
           &:nth-of-type(1) {
+            animation-delay: 5s;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            // animation-name: left-diamond-slide;
+            background: $yellow;
             left: 66.29px;
             top: 350px;
-            background: $yellow;
-            // animation-name: left-diamond-slide;
-            animation-duration: 0.3s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-            animation-delay: 5s;
           }
 
           &:nth-of-type(2) {
+            animation-delay: 5s;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            // animation-name: right-diamond-slide;
+            background: $red;
             left: 199.901px;
             top: -350px;
-            background: $red;
-            // animation-name: right-diamond-slide;
-            animation-duration: 0.3s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-            animation-delay: 5s;
           }
         }
       }
@@ -512,79 +510,79 @@ body {
 
   @keyframes slide-up-and-color {
     from {
-      top: 68%;
       filter: saturate(0);
+      top: 68%;
     }
     to {
-      top: 55%;
       filter: none;
+      top: 55%;
     }
   }
 
   .main-logo {
+    animation-delay: 6.25s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    // animation-name: slide-up-and-color;
+    filter: saturate(0);
+    left: 50%;
     position: absolute;
     top: 68%;
-    left: 50%;
-    filter: saturate(0);
     transform: translate(-50%);
-    // animation-name: slide-up-and-color;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 6.25s;
   }
 }
 
 header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5.2rem;
-  padding: 1rem;
   background: $white;
+  height: 5.2rem;
+  left: 0;
+  padding: 1rem;
+  top: 0;
+  width: 100%;
   z-index: 15;
+  position: sticky;
 
   .header-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: inherit;
-    z-index: 1;
     background: $white;
+    height: inherit;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
   }
 
   .main-logo {
-    position: relative;
     display: inline-block;
     z-index: 1;
+    position: relative;
   }
 
   .hamburger-wrapper {
-    position: absolute;
-    top: 1.3rem;
-    right: 1rem;
-    width: 2.5rem;
     height: auto;
+    right: 1rem;
+    top: 1.3rem;
+    width: 2.5rem;
+    position: absolute;
 
     .hamburger {
-      position: absolute;
-      width: 2.5rem;
-      height: 2rem;
+      cursor: pointer;
       display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      grid-template-columns: repeat(3, 1fr);
       grid-template-areas:
         'span1 span1 span1'
         'span2 redspan span3'
         'span4 span4 span4';
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      height: 2rem;
+      width: 2.5rem;
       z-index: 1;
-      cursor: pointer;
+      position: absolute;
 
       span {
-        height: 0.25rem;
         background: $black;
+        height: 0.25rem;
         transition: all 0.3s ease-in-out;
 
         &:nth-of-type(1),
@@ -594,13 +592,13 @@ header {
 
         &:nth-of-type(2),
         &:nth-of-type(3) {
-          width: 0.5rem;
           align-self: center;
+          width: 0.5rem;
         }
 
         &:nth-of-type(1) {
-          grid-area: span1;
           align-self: flex-start;
+          grid-area: span1;
           transform-origin: left;
         }
 
@@ -614,14 +612,14 @@ header {
         }
 
         &:nth-of-type(4) {
-          grid-area: span4;
           align-self: flex-end;
+          grid-area: span4;
           transform-origin: left;
         }
 
         &:nth-of-type(5) {
-          grid-area: redspan;
           align-self: center;
+          grid-area: redspan;
           background: $red;
         }
       }
@@ -638,18 +636,18 @@ header {
 
           &:nth-of-type(1),
           &:nth-of-type(4) {
-            margin-left: 0.4rem;
             background: $red;
+            margin-left: 0.4rem;
           }
 
           &:nth-of-type(1) {
-            transform: rotate(45deg);
             margin-left: 0.4rem;
+            transform: rotate(45deg);
           }
 
           &:nth-of-type(4) {
-            transform: rotate(-45deg);
             margin-left: 0.4rem;
+            transform: rotate(-45deg);
           }
         }
       }
@@ -661,18 +659,18 @@ header {
   }
 
   .main-nav {
-    position: fixed;
-    top: -150vh;
-    // top: 5.2rem;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 5.2rem);
-    padding: 2rem 1rem;
     background: $white;
     display: grid;
     grid-template-rows: 1fr 1fr;
+    height: calc(100vh - 5.2rem);
+    left: 0;
+    padding: 2rem 1rem;
+    position: fixed;
     row-gap: 1rem;
+    top: -150vh;
+    // top: 5.2rem;
     transition: top 0.3s ease-in-out;
+    width: 100%;
     z-index: 0;
 
     &--open {
@@ -681,33 +679,33 @@ header {
     }
 
     ul {
-      width: 100%;
       display: flex;
       flex-flow: column nowrap;
       list-style-type: none;
+      width: 100%;
       z-index: 0;
 
       li {
-        text-align: center;
         height: 4rem;
+        text-align: center;
 
         a {
-          position: relative;
-          text-decoration: none;
-          line-height: 4rem;
+          color: $black;
           font-weight: 600;
           letter-spacing: 0.1em;
-          color: $black;
+          line-height: 4rem;
+          position: relative;
+          text-decoration: none;
 
           &::after {
             content: '';
+            height: 100%;
+            left: 0;
             position: absolute;
             top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            z-index: -1;
             transition: width 0.2s ease-in-out;
+            width: 0;
+            z-index: -1;
           }
 
           &:hover {
@@ -745,18 +743,18 @@ header {
 
     .short-logo {
       display: none;
-      width: 10rem;
       margin: 0 auto;
+      width: 10rem;
     }
 
     @media (min-width: 1280px) {
+      display: block;
+      height: 4rem;
+      left: 50%;
+      padding: 0;
       position: fixed;
       top: 0;
-      left: 50%;
       width: 50%;
-      height: 4rem;
-      padding: 0;
-      display: block;
       z-index: 5;
 
       .social-media-links {
@@ -768,8 +766,8 @@ header {
         justify-content: space-evenly;
 
         li {
-          padding-top: 3rem;
           height: auto;
+          padding-top: 3rem;
 
           a {
             line-height: 1rem;
@@ -786,40 +784,40 @@ header {
 }
 
 main {
-  width: 100%;
   height: auto;
+  width: 100%;
 
   section {
-    width: 100%;
     min-height: 50vh;
     padding-top: 4.5rem;
+    width: 100%;
 
     .section-title {
-      position: relative;
-      display: inline-block;
-      max-width: 100%;
-      height: 3rem;
-      padding-left: 5rem;
-      padding-right: 1rem;
-      margin: 3rem 0 2rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-align: right;
-      line-height: 3rem;
       border: 3px solid $black;
       border-left: none;
       border-top: none;
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 600;
+      height: 3rem;
+      letter-spacing: 0.1em;
+      line-height: 3rem;
+      margin: 3rem 0 2rem;
+      max-width: 100%;
+      padding-left: 5rem;
+      padding-right: 1rem;
+      position: relative;
+      text-align: right;
 
       &::after {
-        content: '';
-        position: absolute;
-        width: 2.5rem;
-        height: 2.5rem;
-        bottom: 0;
-        left: 1rem;
         border: 3px solid $black;
         border-bottom: none;
+        bottom: 0;
+        content: '';
+        height: 2.5rem;
+        left: 1rem;
+        position: absolute;
+        width: 2.5rem;
       }
 
       @media (min-width: 700px) {
@@ -845,12 +843,12 @@ main {
 
     .section-intro {
       p {
-        width: calc(100% - 4rem);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5em;
         margin: 1rem 2rem;
         text-align: center;
-        font-size: 1rem;
-        line-height: 1.5em;
-        font-weight: 500;
+        width: calc(100% - 4rem);
 
         a {
           color: $red;
@@ -858,8 +856,8 @@ main {
       }
 
       @media (min-width: 700px) {
-        width: 60%;
         margin-left: 20%;
+        width: 60%;
       }
     }
 
@@ -893,31 +891,31 @@ main {
       min-height: 50vh;
 
       .about-photo-grid {
-        position: relative;
         display: grid;
-        grid-template-rows: repeat(3, 1fr);
         grid-template-columns: repeat(3, 1fr);
-        width: 17rem;
+        grid-template-rows: repeat(3, 1fr);
         height: 20rem;
         margin-left: 50%;
-        transform: translateX(-50%);
         overflow: hidden;
+        position: relative;
+        transform: translateX(-50%);
+        width: 17rem;
 
         .photo {
+          filter: saturate(0);
+          left: 0;
           position: absolute;
           top: -20%;
-          left: 0;
           width: 100%;
           z-index: -1;
-          filter: saturate(0);
         }
 
         .photo-block {
-          border: 3px solid $black;
-          width: 100%;
-          height: 100%;
           background: transparent;
+          border: 3px solid $black;
+          height: 100%;
           transform-origin: center;
+          width: 100%;
 
           &:nth-of-type(1) {
             border-bottom: none;
@@ -939,15 +937,15 @@ main {
             border-right: none;
           }
           &:nth-of-type(6) {
+            background: #fff;
             border-right: none;
             border-bottom: none;
-            background: #fff;
           }
           &:nth-of-type(7) {
-            border-left: none;
-            border-bottom: none;
-            border-right: none;
             background: #fff;
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
           }
           &:nth-of-type(8) {
             border-right: none;
@@ -971,20 +969,20 @@ main {
           }
 
           .flip-layer {
-            width: 100%;
-            height: 100%;
-            font-size: 4rem;
-            line-height: 6.4rem;
-            font-weight: 600;
-            text-align: center;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-name: rotate-flip-layer;
+            backface-visibility: hidden;
             background: $red;
             color: $white;
-            backface-visibility: hidden;
+            font-size: 4rem;
+            font-weight: 600;
+            height: 100%;
+            line-height: 6.4rem;
+            text-align: center;
             transform-origin: center;
             transform: rotateY(0);
-            animation-name: rotate-flip-layer;
-            animation-iteration-count: infinite;
-            animation-fill-mode: ease;
+            width: 100%;
           }
 
           &:nth-of-type(1) {
@@ -1047,8 +1045,8 @@ main {
         padding-bottom: 5rem;
 
         .about-photo-grid {
-          height: 30rem;
           width: 25rem;
+          height: 30rem;
 
           .photo-block {
             .flip-layer {
@@ -1061,13 +1059,13 @@ main {
 
     @media (min-width: 1280px) {
       .portfolio-intro-container {
-        min-height: 35rem;
         height: 60vh;
+        min-height: 35rem;
 
         .about-photo-grid {
-          width: 25.5rem;
           height: 31rem;
           margin-bottom: 4rem;
+          width: 25.5rem;
 
           .photo-block {
             .flip-layer {
@@ -1079,9 +1077,9 @@ main {
 
       .section-intro {
         &:first-of-type {
-          width: 40%;
           margin-left: 30%;
           padding-bottom: 3rem;
+          width: 40%;
         }
       }
     }
@@ -1091,14 +1089,14 @@ main {
     .skills-container {
       display: flex;
       flex-flow: row wrap;
-      padding: 1rem 20%;
       justify-content: space-between;
+      padding: 1rem 20%;
 
       .skill-container {
-        width: 49%;
-        margin: 1rem 0;
         display: grid;
         grid-template-rows: 1fr auto;
+        margin: 1rem 0;
+        width: 49%;
 
         img {
           justify-self: center;
@@ -1107,8 +1105,8 @@ main {
         }
 
         p {
-          text-align: center;
           color: $grey;
+          text-align: center;
         }
       }
     }
@@ -1124,25 +1122,25 @@ main {
 
   #projects {
     #project-cards-container {
-      position: relative;
       height: 100vh;
-      width: auto;
-      padding: 2rem 1rem;
       overflow-x: scroll;
       overflow-y: hidden;
-      white-space: nowrap;
+      padding: 2rem 1rem;
       perspective: 1000px;
+      position: relative;
+      white-space: nowrap;
+      width: auto;
       z-index: 0;
 
       .project-card-wrapper {
-        position: relative;
+        cursor: pointer;
         display: inline-block;
-        width: 50%;
         height: 80vh;
         margin: 0 0.5rem;
         overflow: hidden;
+        position: relative;
         transition: all 0.2s ease-in-out;
-        cursor: pointer;
+        width: 50%;
 
         &:first-of-type {
           margin-left: 0;
@@ -1175,69 +1173,69 @@ main {
         }
 
         .project-card {
-          width: 100%;
-          height: inherit;
-          padding: 0.5rem;
           display: grid;
           grid-template-rows: auto 1fr auto auto;
-          z-index: 2;
+          height: inherit;
+          padding: 0.5rem;
           transition: all 0.2s ease-in-out;
+          width: 100%;
+          z-index: 2;
 
           &:last-of-type {
             margin-right: 50%;
           }
 
           .project-number {
+            color: $white;
             font-size: 5rem;
             font-weight: 500;
-            color: $white;
             transition: font-size 0.2s ease-in-out;
           }
 
           .project-title {
-            width: 9rem;
-            white-space: normal;
-            padding-right: 20%;
             color: $white;
             font-size: 0.9rem;
             font-weight: 600;
             line-height: 1.5em;
+            padding-right: 20%;
             text-transform: uppercase;
             transform-origin: bottom left;
             transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+            white-space: normal;
+            width: 9rem;
           }
 
           .project-type {
-            width: 9rem;
-            white-space: normal;
-            padding-right: 100%;
             color: $white;
             font-size: 0.9rem;
-            line-height: 1.5em;
             font-weight: 400;
+            line-height: 1.5em;
+            padding-right: 100%;
             padding-right: 100%;
             text-transform: capitalize;
+            white-space: normal;
+            width: 9rem;
           }
         }
 
         .project-details {
-          position: absolute;
-          top: 0;
-          left: 25%;
+          background: $white;
+          cursor: default;
           height: 100%;
-          width: 75%;
-          padding: 1rem 0;
+          left: 25%;
           overflow-x: hidden;
           overflow-y: scroll;
+          padding: 1rem 0;
+          position: absolute;
+          top: 0;
           white-space: normal;
-          background: $white;
+          width: 75%;
           z-index: -1;
-          cursor: default;
 
           .project-logo {
             display: block;
-            width: 8rem;
             margin: 0 auto 2rem;
+            width: 8rem;
           }
 
           .project-screenshot-wrapper {
@@ -1247,9 +1245,9 @@ main {
           h3 {
             font-size: 1rem;
             font-weight: 600;
-            text-transform: uppercase;
             margin-bottom: 3em;
             padding: 0 1rem;
+            text-transform: uppercase;
           }
 
           .project-text {
@@ -1258,29 +1256,29 @@ main {
             p {
               font-size: 1rem;
               line-height: 1.5em;
-              text-align: justify;
               padding-bottom: 1.5em;
+              text-align: justify;
             }
           }
 
           .created-with {
+            align-items: center;
             display: flex;
             flex-flow: column nowrap;
-            align-items: center;
-            padding: 0 1rem 1.5em;
             margin-bottom: 3rem;
+            padding: 0 1rem 1.5em;
 
             h3 {
               font-size: 1rem;
               font-weight: 600;
-              text-transform: capitalize;
               margin-bottom: 1.5em;
               padding: 0 1rem;
+              text-transform: capitalize;
             }
 
             .lang-container {
-              text-align: center;
               margin-bottom: 1.5rem;
+              text-align: center;
 
               img {
                 width: 4rem;
@@ -1294,43 +1292,43 @@ main {
           }
 
           .buttons {
+            align-items: center;
             display: flex;
             flex-flow: column nowrap;
-            align-items: center;
           }
 
           .under-development-banner {
-            position: fixed;
-            top: 4rem;
-            right: -3rem;
-            width: 16rem;
-            height: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.5rem;
             background: $red;
             color: $white;
+            font-size: 1rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            position: fixed;
+            right: -3rem;
             text-align: center;
+            top: 4rem;
             transform: rotate(45deg);
+            width: 16rem;
           }
 
           .development-modal {
+            background: $white;
+            border: 3px solid $black;
             display: flex;
-            visibility: hidden;
             flex-flow: column nowrap;
+            height: calc(100% - 1rem);
+            left: calc(30% - 0.5rem);
+            padding: 40% 1.25rem 1rem;
             position: fixed;
             top: -300vh;
-            left: calc(30% - 0.5rem);
+            visibility: hidden;
             width: 70%;
-            height: calc(100% - 1rem);
-            background: $white;
-            padding: 40% 1.25rem 1rem;
-            border: 3px solid $black;
 
             p {
-              grid-column: 1 / 3;
-              text-align: center;
               font-weight: 500;
+              grid-column: 1 / 3;
               margin-bottom: 1rem;
+              text-align: center;
 
               &:first-of-type {
                 color: $red;
@@ -1339,8 +1337,8 @@ main {
 
             .button--secondary,
             .button--danger {
-              margin: 0 auto;
               justify-self: center;
+              margin: 0 auto;
               margin-bottom: 1rem;
             }
           }
@@ -1348,9 +1346,9 @@ main {
 
         &--open {
           @extend .project-card-wrapper;
-          width: 100%;
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.22);
+          width: 100%;
 
           .project-card {
             width: 25%;
@@ -1361,8 +1359,8 @@ main {
             }
 
             .project-title {
-              transform: rotate(-90deg);
               margin-left: 3rem;
+              transform: rotate(-90deg);
             }
 
             .project-type {
@@ -1373,9 +1371,9 @@ main {
       }
 
       #spinner-container {
+        left: 50%;
         position: absolute;
         top: 50%;
-        left: 50%;
         transform: translateX(-50%) translateY(-50%);
       }
 
@@ -1396,8 +1394,8 @@ main {
       }
 
       @media (min-width: 1600px) {
-        width: 70%;
         margin-left: 15%;
+        width: 70%;
 
         .project-card-wrapper {
           width: 40%;
@@ -1408,19 +1406,19 @@ main {
 
   #contact {
     #contact-form {
-      position: relative;
-      width: calc(100% - 2rem);
       margin: 1rem;
       padding: 1rem;
+      position: relative;
+      width: calc(100% - 2rem);
 
       input,
       textarea {
-        width: 100%;
         border: 3px solid $black;
-        padding: 0.5rem 1rem;
-        margin: 0.5rem 0;
-        font-size: 1rem;
         font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        padding: 0.5rem 1rem;
+        width: 100%;
       }
 
       input[type='submit'] {
@@ -1428,33 +1426,33 @@ main {
       }
 
       textarea {
-        resize: none;
         height: 12rem;
+        resize: none;
       }
 
       @media (min-width: 700px) {
-        width: 60%;
         margin-left: 20%;
+        width: 60%;
       }
 
       @media (min-width: 1400px) {
-        width: 40%;
         margin-left: 30%;
+        width: 40%;
       }
     }
   }
 }
 footer {
+  background: $black;
   height: 30vh;
   width: 100%;
-  background: $black;
 
   p {
     color: $white;
-    width: 15rem;
-    text-align: center;
-    padding: 3rem 0;
     margin: 0 auto;
+    padding: 3rem 0;
+    text-align: center;
+    width: 15rem;
   }
 
   .social-media-links {
