@@ -32,7 +32,7 @@ body {
   background-color: $white;
   color: $black;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
   h1,
   h2,
@@ -48,7 +48,7 @@ body {
   input,
   button,
   span {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -576,9 +576,9 @@ header {
       grid-template-rows: repeat(3, 1fr);
       grid-template-columns: repeat(3, 1fr);
       grid-template-areas:
-        "span1 span1 span1"
-        "span2 redspan span3"
-        "span4 span4 span4";
+        'span1 span1 span1'
+        'span2 redspan span3'
+        'span4 span4 span4';
       z-index: 1;
       cursor: pointer;
 
@@ -700,7 +700,7 @@ header {
           color: $black;
 
           &::after {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
@@ -812,7 +812,7 @@ main {
       border-top: none;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         width: 2.5rem;
         height: 2.5rem;
@@ -1122,237 +1122,286 @@ main {
     }
   }
 
-  #project-cards-container {
-    position: relative;
-    height: 100vh;
-    width: auto;
-    padding: 2rem 1rem;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    perspective: 1000px;
-    z-index: 0;
-
-    .project-card-wrapper {
+  #projects {
+    #project-cards-container {
       position: relative;
-      display: inline-block;
-      width: 50%;
-      height: 80vh;
-      margin: 0 0.5rem;
-      overflow: hidden;
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
+      height: 100vh;
+      width: auto;
+      padding: 2rem 1rem;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      perspective: 1000px;
+      z-index: 0;
 
-      &:first-of-type {
-        margin-left: 0;
-      }
-
-      &:not(:first-of-type) {
-        transform: rotateY(-50deg);
-      }
-
-      &:last-of-type {
-        margin-right: 50%;
-      }
-
-      &:nth-of-type(3n - 2) {
-        .project-card {
-          background: $red;
-        }
-      }
-
-      &:nth-of-type(3n - 1) {
-        .project-card {
-          background: $blue;
-        }
-      }
-
-      &:nth-of-type(3n) {
-        .project-card {
-          background: $yellow;
-        }
-      }
-
-      .project-card {
-        width: 100%;
-        height: inherit;
-        padding: 0.5rem;
-        display: grid;
-        grid-template-rows: auto 1fr auto auto;
-        z-index: 2;
+      .project-card-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        height: 80vh;
+        margin: 0 0.5rem;
+        overflow: hidden;
         transition: all 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        &:not(:first-of-type) {
+          transform: rotateY(-50deg);
+        }
 
         &:last-of-type {
           margin-right: 50%;
         }
 
-        .project-number {
-          font-size: 5rem;
-          font-weight: 500;
-          color: $white;
-          transition: font-size 0.2s ease-in-out;
-        }
-
-        .project-title {
-          width: 9rem;
-          white-space: normal;
-          padding-right: 20%;
-          color: $white;
-          font-size: 0.9rem;
-          font-weight: 600;
-          line-height: 1.5em;
-          text-transform: uppercase;
-          transform-origin: bottom left;
-          transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
-        }
-
-        .project-type {
-          width: 9rem;
-          white-space: normal;
-          padding-right: 100%;
-          color: $white;
-          font-size: 0.9rem;
-          line-height: 1.5em;
-          font-weight: 400;
-          padding-right: 100%;
-          text-transform: capitalize;
-        }
-      }
-
-      .project-details {
-        position: absolute;
-        top: 0;
-        left: 25%;
-        height: 100%;
-        width: 75%;
-        padding: 1rem 0;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        white-space: normal;
-        background: $white;
-        z-index: -1;
-
-        .project-logo {
-          display: block;
-          width: 8rem;
-          margin: 0 auto 2rem;
-        }
-
-        .project-screenshot-wrapper {
-          display: none;
-        }
-
-        h3 {
-          font-size: 1rem;
-          font-weight: 600;
-          text-transform: uppercase;
-          margin-bottom: 3em;
-          padding: 0 1rem;
-        }
-
-        .project-text {
-          padding: 0 1rem 1.5em;
-
-          p {
-            font-size: 1rem;
-            line-height: 1.5em;
-            text-align: justify;
-            padding-bottom: 1.5em;
+        &:nth-of-type(3n - 2) {
+          .project-card {
+            background: $red;
           }
         }
 
-        .created-with {
-          display: flex;
-          flex-flow: column nowrap;
-          align-items: center;
-          padding: 0 1rem 1.5em;
-          margin-bottom: 3rem;
+        &:nth-of-type(3n - 1) {
+          .project-card {
+            background: $blue;
+          }
+        }
+
+        &:nth-of-type(3n) {
+          .project-card {
+            background: $yellow;
+          }
+        }
+
+        .project-card {
+          width: 100%;
+          height: inherit;
+          padding: 0.5rem;
+          display: grid;
+          grid-template-rows: auto 1fr auto auto;
+          z-index: 2;
+          transition: all 0.2s ease-in-out;
+
+          &:last-of-type {
+            margin-right: 50%;
+          }
+
+          .project-number {
+            font-size: 5rem;
+            font-weight: 500;
+            color: $white;
+            transition: font-size 0.2s ease-in-out;
+          }
+
+          .project-title {
+            width: 9rem;
+            white-space: normal;
+            padding-right: 20%;
+            color: $white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.5em;
+            text-transform: uppercase;
+            transform-origin: bottom left;
+            transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+          }
+
+          .project-type {
+            width: 9rem;
+            white-space: normal;
+            padding-right: 100%;
+            color: $white;
+            font-size: 0.9rem;
+            line-height: 1.5em;
+            font-weight: 400;
+            padding-right: 100%;
+            text-transform: capitalize;
+          }
+        }
+
+        .project-details {
+          position: absolute;
+          top: 0;
+          left: 25%;
+          height: 100%;
+          width: 75%;
+          padding: 1rem 0;
+          overflow-x: hidden;
+          overflow-y: scroll;
+          white-space: normal;
+          background: $white;
+          z-index: -1;
+          cursor: default;
+
+          .project-logo {
+            display: block;
+            width: 8rem;
+            margin: 0 auto 2rem;
+          }
+
+          .project-screenshot-wrapper {
+            display: none;
+          }
 
           h3 {
             font-size: 1rem;
             font-weight: 600;
-            text-transform: capitalize;
-            margin-bottom: 1.5em;
+            text-transform: uppercase;
+            margin-bottom: 3em;
             padding: 0 1rem;
           }
 
-          .lang-container {
-            text-align: center;
-            margin-bottom: 1.5rem;
-
-            img {
-              width: 4rem;
-            }
+          .project-text {
+            padding: 0 1rem 1.5em;
 
             p {
-              color: $grey;
-              text-transform: uppercase;
+              font-size: 1rem;
+              line-height: 1.5em;
+              text-align: justify;
+              padding-bottom: 1.5em;
+            }
+          }
+
+          .created-with {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            padding: 0 1rem 1.5em;
+            margin-bottom: 3rem;
+
+            h3 {
+              font-size: 1rem;
+              font-weight: 600;
+              text-transform: capitalize;
+              margin-bottom: 1.5em;
+              padding: 0 1rem;
+            }
+
+            .lang-container {
+              text-align: center;
+              margin-bottom: 1.5rem;
+
+              img {
+                width: 4rem;
+              }
+
+              p {
+                color: $grey;
+                text-transform: uppercase;
+              }
+            }
+          }
+
+          .buttons {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+          }
+
+          .under-development-banner {
+            position: fixed;
+            top: 4rem;
+            right: -3rem;
+            width: 16rem;
+            height: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            background: $red;
+            color: $white;
+            text-align: center;
+            transform: rotate(45deg);
+          }
+
+          .development-modal {
+            display: flex;
+            visibility: hidden;
+            flex-flow: column nowrap;
+            position: fixed;
+            top: -300vh;
+            left: calc(30% - 0.5rem);
+            width: 70%;
+            height: calc(100% - 1rem);
+            background: $white;
+            padding: 40% 2rem 10%;
+            border: 3px solid $black;
+
+            p {
+              grid-column: 1 / 3;
+              text-align: center;
+              font-weight: 500;
+              margin-bottom: 1rem;
+
+              &:first-of-type {
+                color: $red;
+              }
+            }
+
+            .button--secondary,
+            .button--danger {
+              margin: 0 auto;
+              justify-self: center;
+              margin-bottom: 1rem;
             }
           }
         }
 
-        .buttons {
-          display: flex;
-          flex-flow: column nowrap;
-          align-items: center;
-        }
-      }
+        &--open {
+          @extend .project-card-wrapper;
+          width: 100%;
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
 
-      &--open {
-        @extend .project-card-wrapper;
-        width: 100%;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-          0 10px 10px rgba(0, 0, 0, 0.22);
+          .project-card {
+            width: 25%;
+            overflow: hidden;
 
-        .project-card {
-          width: 25%;
-          overflow: hidden;
+            .project-number {
+              font-size: 2rem;
+            }
 
-          .project-number {
-            font-size: 2rem;
-          }
+            .project-title {
+              transform: rotate(-90deg);
+              margin-left: 3rem;
+            }
 
-          .project-title {
-            transform: rotate(-90deg);
-            margin-left: 3rem;
-          }
-
-          .project-type {
-            opacity: 0;
+            .project-type {
+              opacity: 0;
+            }
           }
         }
       }
-    }
 
-    #spinner-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-
-    @media (min-width: 700px) and (min-height: 980px) {
-      height: 70vh;
-
-      .project-card-wrapper {
-        height: calc(70vh - 5rem);
+      #spinner-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
       }
-    }
 
-    @media (min-width: 1280px) {
-      height: 80vh;
-      .project-card-wrapper {
-        margin-top: 5vh;
-        width: 30%;
+      @media (min-width: 700px) and (min-height: 980px) {
+        height: 70vh;
+
+        .project-card-wrapper {
+          height: calc(70vh - 5rem);
+        }
       }
-    }
 
-    @media (min-width: 1600px) {
-      width: 70%;
-      margin-left: 15%;
+      @media (min-width: 1280px) {
+        height: 80vh;
+        .project-card-wrapper {
+          margin-top: 5vh;
+          width: 30%;
+        }
+      }
 
-      .project-card-wrapper {
-        width: 40%;
+      @media (min-width: 1600px) {
+        width: 70%;
+        margin-left: 15%;
+
+        .project-card-wrapper {
+          width: 40%;
+        }
       }
     }
   }
@@ -1371,10 +1420,10 @@ main {
         padding: 0.5rem 1rem;
         margin: 0.5rem 0;
         font-size: 1rem;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
       }
 
-      input[type="submit"] {
+      input[type='submit'] {
         width: 8rem;
       }
 

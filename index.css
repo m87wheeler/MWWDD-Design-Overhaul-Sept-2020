@@ -25,7 +25,7 @@ body {
   background-color: #fff;
   color: #231f20;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body h1,
@@ -42,7 +42,7 @@ body div,
 body input,
 body button,
 body span {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .main-logo {
@@ -747,7 +747,7 @@ header .hamburger-wrapper .hamburger, header .hamburger-wrapper .hamburger--open
       grid-template-rows: repeat(3, 1fr);
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-      grid-template-areas: "span1 span1 span1" "span2 redspan span3" "span4 span4 span4";
+      grid-template-areas: 'span1 span1 span1' 'span2 redspan span3' 'span4 span4 span4';
   z-index: 1;
   cursor: pointer;
 }
@@ -893,7 +893,7 @@ header .main-nav ul li a, header .main-nav--open ul li a {
 }
 
 header .main-nav ul li a::after, header .main-nav--open ul li a::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -995,7 +995,7 @@ main section .section-title {
 }
 
 main section .section-title::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 2.5rem;
   height: 2.5rem;
@@ -1335,7 +1335,7 @@ main #skills .skills-container .skill-container p {
   }
 }
 
-main #project-cards-container {
+main #projects #project-cards-container {
   position: relative;
   height: 100vh;
   width: auto;
@@ -1348,7 +1348,7 @@ main #project-cards-container {
   z-index: 0;
 }
 
-main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+main #projects #project-cards-container .project-card-wrapper, main #projects #project-cards-container .project-card-wrapper--open {
   position: relative;
   display: inline-block;
   width: 50%;
@@ -1360,32 +1360,32 @@ main #project-cards-container .project-card-wrapper, main #project-cards-contain
   cursor: pointer;
 }
 
-main #project-cards-container .project-card-wrapper:first-of-type, main #project-cards-container .project-card-wrapper--open:first-of-type {
+main #projects #project-cards-container .project-card-wrapper:first-of-type, main #projects #project-cards-container .project-card-wrapper--open:first-of-type {
   margin-left: 0;
 }
 
-main #project-cards-container .project-card-wrapper:not(:first-of-type), main #project-cards-container .project-card-wrapper--open:not(:first-of-type) {
+main #projects #project-cards-container .project-card-wrapper:not(:first-of-type), main #projects #project-cards-container .project-card-wrapper--open:not(:first-of-type) {
   -webkit-transform: rotateY(-50deg);
           transform: rotateY(-50deg);
 }
 
-main #project-cards-container .project-card-wrapper:last-of-type, main #project-cards-container .project-card-wrapper--open:last-of-type {
+main #projects #project-cards-container .project-card-wrapper:last-of-type, main #projects #project-cards-container .project-card-wrapper--open:last-of-type {
   margin-right: 50%;
 }
 
-main #project-cards-container .project-card-wrapper:nth-of-type(3n - 2) .project-card, main #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 2) .project-card {
+main #projects #project-cards-container .project-card-wrapper:nth-of-type(3n - 2) .project-card, main #projects #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 2) .project-card {
   background: #ce3434;
 }
 
-main #project-cards-container .project-card-wrapper:nth-of-type(3n - 1) .project-card, main #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 1) .project-card {
+main #projects #project-cards-container .project-card-wrapper:nth-of-type(3n - 1) .project-card, main #projects #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 1) .project-card {
   background: #0068aa;
 }
 
-main #project-cards-container .project-card-wrapper:nth-of-type(3n) .project-card, main #project-cards-container .project-card-wrapper--open:nth-of-type(3n) .project-card {
+main #projects #project-cards-container .project-card-wrapper:nth-of-type(3n) .project-card, main #projects #project-cards-container .project-card-wrapper--open:nth-of-type(3n) .project-card {
   background: #ffa520;
 }
 
-main #project-cards-container .project-card-wrapper .project-card, main #project-cards-container .project-card-wrapper--open .project-card {
+main #projects #project-cards-container .project-card-wrapper .project-card, main #projects #project-cards-container .project-card-wrapper--open .project-card {
   width: 100%;
   height: inherit;
   padding: 0.5rem;
@@ -1398,11 +1398,11 @@ main #project-cards-container .project-card-wrapper .project-card, main #project
   transition: all 0.2s ease-in-out;
 }
 
-main #project-cards-container .project-card-wrapper .project-card:last-of-type, main #project-cards-container .project-card-wrapper--open .project-card:last-of-type {
+main #projects #project-cards-container .project-card-wrapper .project-card:last-of-type, main #projects #project-cards-container .project-card-wrapper--open .project-card:last-of-type {
   margin-right: 50%;
 }
 
-main #project-cards-container .project-card-wrapper .project-card .project-number, main #project-cards-container .project-card-wrapper--open .project-card .project-number {
+main #projects #project-cards-container .project-card-wrapper .project-card .project-number, main #projects #project-cards-container .project-card-wrapper--open .project-card .project-number {
   font-size: 5rem;
   font-weight: 500;
   color: #fff;
@@ -1410,7 +1410,7 @@ main #project-cards-container .project-card-wrapper .project-card .project-numbe
   transition: font-size 0.2s ease-in-out;
 }
 
-main #project-cards-container .project-card-wrapper .project-card .project-title, main #project-cards-container .project-card-wrapper--open .project-card .project-title {
+main #projects #project-cards-container .project-card-wrapper .project-card .project-title, main #projects #project-cards-container .project-card-wrapper--open .project-card .project-title {
   width: 9rem;
   white-space: normal;
   padding-right: 20%;
@@ -1427,7 +1427,7 @@ main #project-cards-container .project-card-wrapper .project-card .project-title
   transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
-main #project-cards-container .project-card-wrapper .project-card .project-type, main #project-cards-container .project-card-wrapper--open .project-card .project-type {
+main #projects #project-cards-container .project-card-wrapper .project-card .project-type, main #projects #project-cards-container .project-card-wrapper--open .project-card .project-type {
   width: 9rem;
   white-space: normal;
   padding-right: 100%;
@@ -1439,7 +1439,7 @@ main #project-cards-container .project-card-wrapper .project-card .project-type,
   text-transform: capitalize;
 }
 
-main #project-cards-container .project-card-wrapper .project-details, main #project-cards-container .project-card-wrapper--open .project-details {
+main #projects #project-cards-container .project-card-wrapper .project-details, main #projects #project-cards-container .project-card-wrapper--open .project-details {
   position: absolute;
   top: 0;
   left: 25%;
@@ -1451,19 +1451,20 @@ main #project-cards-container .project-card-wrapper .project-details, main #proj
   white-space: normal;
   background: #fff;
   z-index: -1;
+  cursor: default;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .project-logo, main #project-cards-container .project-card-wrapper--open .project-details .project-logo {
+main #projects #project-cards-container .project-card-wrapper .project-details .project-logo, main #projects #project-cards-container .project-card-wrapper--open .project-details .project-logo {
   display: block;
   width: 8rem;
   margin: 0 auto 2rem;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .project-screenshot-wrapper, main #project-cards-container .project-card-wrapper--open .project-details .project-screenshot-wrapper {
+main #projects #project-cards-container .project-card-wrapper .project-details .project-screenshot-wrapper, main #projects #project-cards-container .project-card-wrapper--open .project-details .project-screenshot-wrapper {
   display: none;
 }
 
-main #project-cards-container .project-card-wrapper .project-details h3, main #project-cards-container .project-card-wrapper--open .project-details h3 {
+main #projects #project-cards-container .project-card-wrapper .project-details h3, main #projects #project-cards-container .project-card-wrapper--open .project-details h3 {
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -1471,18 +1472,18 @@ main #project-cards-container .project-card-wrapper .project-details h3, main #p
   padding: 0 1rem;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .project-text, main #project-cards-container .project-card-wrapper--open .project-details .project-text {
+main #projects #project-cards-container .project-card-wrapper .project-details .project-text, main #projects #project-cards-container .project-card-wrapper--open .project-details .project-text {
   padding: 0 1rem 1.5em;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .project-text p, main #project-cards-container .project-card-wrapper--open .project-details .project-text p {
+main #projects #project-cards-container .project-card-wrapper .project-details .project-text p, main #projects #project-cards-container .project-card-wrapper--open .project-details .project-text p {
   font-size: 1rem;
   line-height: 1.5em;
   text-align: justify;
   padding-bottom: 1.5em;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .created-with, main #project-cards-container .project-card-wrapper--open .project-details .created-with {
+main #projects #project-cards-container .project-card-wrapper .project-details .created-with, main #projects #project-cards-container .project-card-wrapper--open .project-details .created-with {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1497,7 +1498,7 @@ main #project-cards-container .project-card-wrapper .project-details .created-wi
   margin-bottom: 3rem;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .created-with h3, main #project-cards-container .project-card-wrapper--open .project-details .created-with h3 {
+main #projects #project-cards-container .project-card-wrapper .project-details .created-with h3, main #projects #project-cards-container .project-card-wrapper--open .project-details .created-with h3 {
   font-size: 1rem;
   font-weight: 600;
   text-transform: capitalize;
@@ -1505,21 +1506,21 @@ main #project-cards-container .project-card-wrapper .project-details .created-wi
   padding: 0 1rem;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .created-with .lang-container, main #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container {
+main #projects #project-cards-container .project-card-wrapper .project-details .created-with .lang-container, main #projects #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container {
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .created-with .lang-container img, main #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container img {
+main #projects #project-cards-container .project-card-wrapper .project-details .created-with .lang-container img, main #projects #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container img {
   width: 4rem;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .created-with .lang-container p, main #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container p {
+main #projects #project-cards-container .project-card-wrapper .project-details .created-with .lang-container p, main #projects #project-cards-container .project-card-wrapper--open .project-details .created-with .lang-container p {
   color: #555;
   text-transform: uppercase;
 }
 
-main #project-cards-container .project-card-wrapper .project-details .buttons, main #project-cards-container .project-card-wrapper--open .project-details .buttons {
+main #projects #project-cards-container .project-card-wrapper .project-details .buttons, main #projects #project-cards-container .project-card-wrapper--open .project-details .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1532,32 +1533,88 @@ main #project-cards-container .project-card-wrapper .project-details .buttons, m
           align-items: center;
 }
 
-main #project-cards-container .project-card-wrapper--open {
+main #projects #project-cards-container .project-card-wrapper .project-details .under-development-banner, main #projects #project-cards-container .project-card-wrapper--open .project-details .under-development-banner {
+  position: fixed;
+  top: 4rem;
+  right: -3rem;
+  width: 16rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  background: #ce3434;
+  color: #fff;
+  text-align: center;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+main #projects #project-cards-container .project-card-wrapper .project-details .development-modal, main #projects #project-cards-container .project-card-wrapper--open .project-details .development-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  position: fixed;
+  top: -300vh;
+  left: calc(30% - 0.5rem);
+  width: 70%;
+  height: calc(100% - 1rem);
+  background: #fff;
+  padding: 40% 2rem 10%;
+  border: 3px solid #231f20;
+}
+
+main #projects #project-cards-container .project-card-wrapper .project-details .development-modal p, main #projects #project-cards-container .project-card-wrapper--open .project-details .development-modal p {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+main #projects #project-cards-container .project-card-wrapper .project-details .development-modal p:first-of-type, main #projects #project-cards-container .project-card-wrapper--open .project-details .development-modal p:first-of-type {
+  color: #ce3434;
+}
+
+main #projects #project-cards-container .project-card-wrapper .project-details .development-modal .button--secondary, main #projects #project-cards-container .project-card-wrapper--open .project-details .development-modal .button--secondary,
+main #projects #project-cards-container .project-card-wrapper .project-details .development-modal .button--danger,
+main #projects #project-cards-container .project-card-wrapper--open .project-details .development-modal .button--danger {
+  margin: 0 auto;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  margin-bottom: 1rem;
+}
+
+main #projects #project-cards-container .project-card-wrapper--open {
   width: 100%;
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-main #project-cards-container .project-card-wrapper--open .project-card {
+main #projects #project-cards-container .project-card-wrapper--open .project-card {
   width: 25%;
   overflow: hidden;
 }
 
-main #project-cards-container .project-card-wrapper--open .project-card .project-number {
+main #projects #project-cards-container .project-card-wrapper--open .project-card .project-number {
   font-size: 2rem;
 }
 
-main #project-cards-container .project-card-wrapper--open .project-card .project-title {
+main #projects #project-cards-container .project-card-wrapper--open .project-card .project-title {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
   margin-left: 3rem;
 }
 
-main #project-cards-container .project-card-wrapper--open .project-card .project-type {
+main #projects #project-cards-container .project-card-wrapper--open .project-card .project-type {
   opacity: 0;
 }
 
-main #project-cards-container #spinner-container {
+main #projects #project-cards-container #spinner-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1566,30 +1623,30 @@ main #project-cards-container #spinner-container {
 }
 
 @media (min-width: 700px) and (min-height: 980px) {
-  main #project-cards-container {
+  main #projects #project-cards-container {
     height: 70vh;
   }
-  main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+  main #projects #project-cards-container .project-card-wrapper, main #projects #project-cards-container .project-card-wrapper--open {
     height: calc(70vh - 5rem);
   }
 }
 
 @media (min-width: 1280px) {
-  main #project-cards-container {
+  main #projects #project-cards-container {
     height: 80vh;
   }
-  main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+  main #projects #project-cards-container .project-card-wrapper, main #projects #project-cards-container .project-card-wrapper--open {
     margin-top: 5vh;
     width: 30%;
   }
 }
 
 @media (min-width: 1600px) {
-  main #project-cards-container {
+  main #projects #project-cards-container {
     width: 70%;
     margin-left: 15%;
   }
-  main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
+  main #projects #project-cards-container .project-card-wrapper, main #projects #project-cards-container .project-card-wrapper--open {
     width: 40%;
   }
 }
@@ -1608,10 +1665,10 @@ main #contact #contact-form textarea {
   padding: 0.5rem 1rem;
   margin: 0.5rem 0;
   font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-main #contact #contact-form input[type="submit"] {
+main #contact #contact-form input[type='submit'] {
   width: 8rem;
 }
 
