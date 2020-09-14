@@ -1563,7 +1563,7 @@ main #projects #project-cards-container .project-card-wrapper .project-details .
   width: 70%;
   height: calc(100% - 1rem);
   background: #fff;
-  padding: 40% 2rem 10%;
+  padding: 40% 1.25rem 1rem;
   border: 3px solid #231f20;
 }
 
