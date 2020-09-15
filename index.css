@@ -1240,6 +1240,7 @@ main #skills .skills-container .skill-container p {
   }
 }
 
+<<<<<<< Updated upstream
 main #project-cards-container {
   position: relative;
   height: 100vh;
@@ -1251,15 +1252,44 @@ main #project-cards-container {
   -webkit-perspective: 1000px;
           perspective: 1000px;
   z-index: 0;
+=======
+main #projects .scroll-buttons {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+main #projects .click-tap {
+  text-align: center;
+  margin: 3rem 0 0;
+}
+
+main #projects #project-cards-container {
+  overflow: hidden;
+  padding-right: 1rem;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  position: relative;
+  scroll-behavior: smooth;
+  height: calc(100vh - 9rem);
+  white-space: nowrap;
+>>>>>>> Stashed changes
 }
 
 main #project-cards-container .project-card-wrapper, main #project-cards-container .project-card-wrapper--open {
   position: relative;
   display: inline-block;
+<<<<<<< Updated upstream
   width: 50%;
   height: 80vh;
   margin: 0 0.5rem;
   overflow: hidden;
+=======
+  height: 75%;
+  margin: 0 0.5rem;
+  overflow: hidden;
+  position: relative;
+  top: 5%;
+>>>>>>> Stashed changes
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -1274,8 +1304,13 @@ main #project-cards-container .project-card-wrapper:not(:first-of-type), main #p
           transform: rotateY(-50deg);
 }
 
+<<<<<<< Updated upstream
 main #project-cards-container .project-card-wrapper:last-of-type, main #project-cards-container .project-card-wrapper--open:last-of-type {
   margin-right: 50%;
+=======
+main #projects #project-cards-container .project-card-wrapper:last-of-type, main #projects #project-cards-container .project-card-wrapper--open:last-of-type {
+  margin-right: 100%;
+>>>>>>> Stashed changes
 }
 
 main #project-cards-container .project-card-wrapper:nth-of-type(3n - 2) .project-card, main #project-cards-container .project-card-wrapper--open:nth-of-type(3n - 2) .project-card {
@@ -1298,7 +1333,12 @@ main #project-cards-container .project-card-wrapper .project-card, main #project
   display: grid;
   -ms-grid-rows: auto 1fr auto auto;
       grid-template-rows: auto 1fr auto auto;
+<<<<<<< Updated upstream
   z-index: 2;
+=======
+  height: 100%;
+  padding: 0.5rem;
+>>>>>>> Stashed changes
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }

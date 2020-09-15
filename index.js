@@ -301,17 +301,58 @@ const isLoading = setInterval(() => {
   }
 }, 500)
 
-// // ***** rotate cards when in view *****
-// PROJECT_CARDS_CONTAINER.addEventListener(
-//   "scroll",
-//   () => {
-//     PROJECT_CARDS.forEach((card, i) => {
-//       if (card.getBoundingClientRect().x <= windowDimensions.width * 0.45) {
-//         card.style.transform = "rotateY(0)"
-//       } else {
-//         card.style.transform = "rotateY(-50deg)"
-//       }
-//     })
-//   },
-//   false
-// )
+// scroll buttons for project tiles
+const prevButton = document.querySelector('#previous-project-btn')
+const nextButton = document.querySelector('#next-project-btn')
+
+let currentInView = 0
+
+const awaitProjectLoad = setInterval(() => {
+  if (!projectDataLoading) {
+    clearInterval(awaitProjectLoad)
+
+    nextButton.addEventListener(
+      'click',
+      () => {
+        let startOffset = PROJECT_CARDS_ARRAY[0].offsetLeft
+
+        if (currentInView < PROJECT_CARDS_ARRAY.length - 1) {
+          let nextElementOffset =
+            PROJECT_CARDS_ARRAY[currentInView + 1].offsetLeft
+
+          PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - startOffset
+          currentInView += 1
+        } else {
+          PROJECT_CARDS_CONTAINER.scrollLeft = startOffset - 8
+          currentInView = 0
+        }
+      },
+      false
+    )
+
+    prevButton.addEventListener(
+      'click',
+      () => {
+        let startOffset =
+          PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1].offsetLeft
+        console.log(
+          PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1],
+          startOffset
+        )
+
+        if (currentInView > 0) {
+          let nextElementOffset =
+            PROJECT_CARDS_ARRAY[currentInView - 1].offsetLeft
+          console.log(nextElementOffset)
+          PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - 8
+          currentInView -= 1
+        } else {
+          PROJECT_CARDS_CONTAINER.scrollLeft = startOffset
+          currentInView = PROJECT_CARDS_ARRAY.length - 1
+          console.log(PROJECT_CARDS_ARRAY[currentInView])
+        }
+      },
+      false
+    )
+  }
+}, 500)
