@@ -1,4 +1,6 @@
-// ***** window *****
+// ******************************************************************
+// *** 00.                                 Window Dimensions Listener
+// ******************************************************************
 let windowDimensions = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -14,7 +16,10 @@ window.addEventListener(
   false
 )
 
-// ***** open nav on hamburger click *****
+// ******************************************************************
+// *** 00.                                    Hamburger Icon Listener
+// ******************************************************************
+
 const HAMBURGER = document.querySelector('#hamburger')
 const MAIN_NAV = document.querySelector('#main-nav')
 let navIsOpen = false
@@ -37,7 +42,10 @@ HAMBURGER.addEventListener(
   false
 )
 
-// ***** close nav when link selected *****
+// ******************************************************************
+// *** 00.                                   Handle Nav On Link Click
+// ******************************************************************
+
 const NAV_LINKS = document.querySelectorAll('#main-nav ul li')
 NAV_LINKS.forEach(a => {
   a.addEventListener(
@@ -50,6 +58,10 @@ NAV_LINKS.forEach(a => {
     false
   )
 })
+
+// ******************************************************************
+// *** 00.                                   Create Element Functions
+// ******************************************************************
 
 // ***** create element with class *****
 const createClassElement = (type, className, text) => {
@@ -95,6 +107,10 @@ const createExternalButton = (text, className, url) => {
 
   return button
 }
+
+// ******************************************************************
+// *** 00.                                      Project Card Creation
+// ******************************************************************
 
 // ***** open card when clicked *****
 const openProjectCard = e => {
@@ -249,6 +265,10 @@ const createProjectCard = (
   PROJECT_CARDS_CONTAINER.appendChild(wrapper)
 }
 
+// ******************************************************************
+// *** 00.                                              Async Fetches
+// ******************************************************************
+
 // ***** fetch Project Cards data from CosmicJS *****
 let projectDataLoading = true
 const LOADING_SPINNER = document.querySelector('#spinner-container')
@@ -286,6 +306,10 @@ const fetchProjectData = async url => {
 }
 fetchProjectData(projectData)
 
+// ******************************************************************
+// *** 00.                                 Async Determined Functions
+// ******************************************************************
+
 // ***** rearrage z-index of cards in reverse order *****
 const arrangeProjectCards = () => {
   let j = PROJECT_CARDS_ARRAY.length
@@ -319,6 +343,10 @@ const isLoading = setInterval(() => {
   }
   PROJECT_CARDS_ARRAY[0].style.transform = 'rotateY(0)'
 }, 500)
+
+// ******************************************************************
+// *** 00.                                     Project Scroll Buttons
+// ******************************************************************
 
 // scroll buttons for project tiles
 const prevButton = document.querySelector('#previous-project-btn')
@@ -375,3 +403,117 @@ const awaitProjectLoad = setInterval(() => {
     )
   }
 }, 500)
+
+// ******************************************************************
+// *** 00.                                            Form Validation
+// ******************************************************************
+
+let nameValid = false
+let emailValid = false
+let messageValid = false
+
+const validateField = (e, type) => {
+  let input = e.target.value
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  const enableSubmit = () => {
+    nameValid && emailValid && messageValid
+      ? (document.querySelector('#form-submit').disabled = false)
+      : (document.querySelector('#form-submit').disabled = true)
+  }
+
+  if (type === 'text' && input) {
+    if (input.length < 1) {
+      console.log('Too short')
+      nameValid = false
+    } else {
+      nameValid = true
+    }
+  } else if (type === 'email' && input) {
+    if (!re.test(String(input).toLocaleLowerCase())) {
+      console.log('Not a valid email')
+      emailValid = false
+    } else {
+      emailValid = true
+    }
+  } else if (type === 'textarea' && input) {
+    if (input.length < 10) {
+      console.log('Too short')
+      messageValid = false
+    } else {
+      messageValid = true
+    }
+  } else {
+    console.log('Empty')
+  }
+
+  !nameValid
+    ? ((document.querySelector('#name-error').style.height = '2rem'),
+      (document.querySelector('#name-error').innerText =
+        'This input cannot be empty'))
+    : (document.querySelector('#name-error').style.height = '0')
+
+  !emailValid
+    ? ((document.querySelector('#email-error').style.height = '2rem'),
+      (document.querySelector('#email-error').innerText =
+        'Make sure this is a valid email address'))
+    : (document.querySelector('#email-error').style.height = '0')
+
+  !messageValid
+    ? ((document.querySelector('#message-error').style.height = '2rem'),
+      (document.querySelector('#message-error').innerText =
+        'How about something a bit longer?'))
+    : (document.querySelector('#message-error').style.height = '0')
+
+  enableSubmit()
+}
+
+const FORM_NAME = document.querySelector('#form-name')
+const FORM_EMAIL = document.querySelector('#form-email')
+const FORM_MESSAGE = document.querySelector('#form-message')
+
+// *****
+FORM_NAME.addEventListener(
+  'input',
+  e => {
+    validateField(e, 'text')
+  },
+  false
+)
+FORM_EMAIL.addEventListener(
+  'input',
+  e => {
+    validateField(e, 'email')
+  },
+  false
+)
+FORM_MESSAGE.addEventListener(
+  'input',
+  e => {
+    validateField(e, 'textarea')
+  },
+  false
+)
+
+// *****
+// FORM_NAME.addEventListener(
+//   'blur',
+//   e => {
+//     validateField(e, 'text')
+//   },
+//   false
+// )
+// FORM_EMAIL.addEventListener(
+//   'blur',
+//   e => {
+//     validateField(e, 'email')
+//   },
+//   false
+// )
+// FORM_MESSAGE.addEventListener(
+//   'blur',
+//   e => {
+//     validateField(e, 'textarea')
+//   },
+//   false
+// )

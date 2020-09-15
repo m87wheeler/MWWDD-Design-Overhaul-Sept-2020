@@ -10,6 +10,7 @@ $red: #ce3434;
 $blue: #0068aa;
 $yellow: #ffa520;
 $grey: #555;
+$lightGrey: #888;
 
 html {
   scroll-behavior: smooth;
@@ -171,6 +172,13 @@ body {
       color: $red;
       background: $white;
     }
+  }
+
+  &:disabled {
+    background: $lightGrey;
+    border: 3px solid $grey;
+    color: $grey;
+    cursor: default;
   }
 }
 
@@ -1414,28 +1422,33 @@ main {
 
   #contact {
     #contact-form {
+      display: flex;
+      flex-flow: column nowrap;
       margin: 1rem;
       padding: 1rem;
       position: relative;
       width: calc(100% - 2rem);
 
-      input,
-      textarea {
-        border: 3px solid $black;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1rem;
+      label {
         margin: 0.5rem 0;
-        padding: 0.5rem 1rem;
-        width: 100%;
-      }
 
-      input[type='submit'] {
-        width: 8rem;
-      }
+        input,
+        textarea {
+          border: 3px solid $black;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+          width: 100%;
+        }
 
-      textarea {
-        height: 12rem;
-        resize: none;
+        input[type='submit'] {
+          width: 8rem;
+        }
+
+        textarea {
+          height: 12rem;
+          resize: none;
+        }
       }
 
       @media (min-width: 700px) {
@@ -1447,9 +1460,24 @@ main {
         margin-left: 30%;
         width: 40%;
       }
+
+      .form-error {
+        color: $red;
+        font-size: 0.9rem;
+        height: 0;
+        line-height: 2rem;
+        overflow: hidden;
+        padding: 0 1rem;
+        transition: height 0.3s ease-in-out;
+
+        &--open {
+          height: 2rem;
+        }
+      }
     }
   }
 }
+
 footer {
   background: $black;
   height: 30vh;

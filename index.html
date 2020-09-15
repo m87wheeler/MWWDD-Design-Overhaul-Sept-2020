@@ -303,26 +303,48 @@
         <form
           action="https://formspree.io/xknqdpwb"
           method="POST"
+          name="contact-form"
           id="contact-form"
         >
+          <label class="form-label" for="name">
+            <input
+              type="text"
+              name="name"
+              id="form-name"
+              placeholder="Your Name"
+            />
+            <p class="form-error" id="name-error">
+              There is some kind of error here.
+            </p>
+          </label>
+          <label class="form-label" for="email"
+            ><input
+              type="email"
+              name="_replyto"
+              id="form-email"
+              placeholder="Your Email Address"
+            />
+            <p class="form-error" id="email-error">
+              There is some kind of error here.
+            </p></label
+          >
+          <label class="form-label" for="message">
+            <textarea
+              name="message"
+              id="form-message"
+              placeholder="Your Message"
+            ></textarea>
+            <p class="form-error" id="message-error">
+              There is some kind of error here.
+            </p>
+          </label>
           <input
-            type="text"
-            name="name"
-            id="form-name"
-            placeholder="Your Name"
+            type="submit"
+            class="button"
+            value="SEND"
+            id="form-submit"
+            disabled="true"
           />
-          <input
-            type="email"
-            name="_replyto"
-            id="form-email"
-            placeholder="Your Email Address"
-          />
-          <textarea
-            name="message"
-            id="form-message"
-            placeholder="Your Message"
-          ></textarea>
-          <input type="submit" class="button" value="SEND" />
         </form>
       </section>
       <section id="blog">

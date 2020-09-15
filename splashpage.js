@@ -1,4 +1,4 @@
-const enableSplash = true // for production
+const enableSplash = false // for production
 
 const SPLASH_PAGE = document.querySelector('#splash-page')
 const ANIMATION_WRAPPER = document.querySelector(
