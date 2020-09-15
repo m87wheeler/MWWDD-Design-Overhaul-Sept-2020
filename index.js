@@ -340,8 +340,8 @@ const isLoading = setInterval(() => {
       },
       false
     )
+    PROJECT_CARDS_ARRAY[0].style.transform = 'rotateY(0)'
   }
-  PROJECT_CARDS_ARRAY[0].style.transform = 'rotateY(0)'
 }, 500)
 
 // ******************************************************************
@@ -382,21 +382,15 @@ const awaitProjectLoad = setInterval(() => {
       () => {
         let startOffset =
           PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1].offsetLeft
-        console.log(
-          PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1],
-          startOffset
-        )
 
         if (currentInView > 0) {
           let nextElementOffset =
             PROJECT_CARDS_ARRAY[currentInView - 1].offsetLeft
-          console.log(nextElementOffset)
           PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - 8
           currentInView -= 1
         } else {
           PROJECT_CARDS_CONTAINER.scrollLeft = startOffset
           currentInView = PROJECT_CARDS_ARRAY.length - 1
-          console.log(PROJECT_CARDS_ARRAY[currentInView])
         }
       },
       false
@@ -423,47 +417,44 @@ const validateField = (e, type) => {
   }
 
   if (type === 'text' && input) {
-    if (input.length < 1) {
-      console.log('Too short')
+    if (input.length < 2) {
       nameValid = false
     } else {
       nameValid = true
     }
   } else if (type === 'email' && input) {
     if (!re.test(String(input).toLocaleLowerCase())) {
-      console.log('Not a valid email')
       emailValid = false
     } else {
       emailValid = true
     }
   } else if (type === 'textarea' && input) {
     if (input.length < 10) {
-      console.log('Too short')
       messageValid = false
     } else {
       messageValid = true
     }
-  } else {
-    console.log('Empty')
   }
 
+  const EMAIL_ERROR_CONTAINER = document.querySelector('#email-error')
+  const NAME_ERROR_CONTAINER = document.querySelector('#name-error')
+  const MSG_ERROR_CONTAINER = document.querySelector('#message-error')
+
   !nameValid
-    ? ((document.querySelector('#name-error').style.height = '2rem'),
-      (document.querySelector('#name-error').innerText =
-        'This input cannot be empty'))
-    : (document.querySelector('#name-error').style.height = '0')
+    ? ((NAME_ERROR_CONTAINER.style.height = '2rem'),
+      (NAME_ERROR_CONTAINER.innerText = 'Use at least two characters'))
+    : (NAME_ERROR_CONTAINER.style.height = '0')
 
   !emailValid
-    ? ((document.querySelector('#email-error').style.height = '2rem'),
-      (document.querySelector('#email-error').innerText =
+    ? ((EMAIL_ERROR_CONTAINER.style.height = '2rem'),
+      (EMAIL_ERROR_CONTAINER.innerText =
         'Make sure this is a valid email address'))
-    : (document.querySelector('#email-error').style.height = '0')
+    : (EMAIL_ERROR_CONTAINER.style.height = '0')
 
   !messageValid
-    ? ((document.querySelector('#message-error').style.height = '2rem'),
-      (document.querySelector('#message-error').innerText =
-        'How about something a bit longer?'))
-    : (document.querySelector('#message-error').style.height = '0')
+    ? ((MSG_ERROR_CONTAINER.style.height = '2rem'),
+      (MSG_ERROR_CONTAINER.innerText = 'How about something a bit longer?'))
+    : (MSG_ERROR_CONTAINER.style.height = '0')
 
   enableSubmit()
 }
