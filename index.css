@@ -1335,26 +1335,35 @@ main #skills .skills-container .skill-container p {
   }
 }
 
+main #projects .scroll-buttons {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+main #projects .click-tap {
+  text-align: center;
+  margin: 3rem 0 0;
+}
+
 main #projects #project-cards-container {
-  height: 100vh;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  padding: 2rem 1rem;
+  overflow: hidden;
+  padding-right: 1rem;
   -webkit-perspective: 1000px;
           perspective: 1000px;
   position: relative;
+  scroll-behavior: smooth;
+  height: calc(100vh - 9rem);
   white-space: nowrap;
-  width: auto;
-  z-index: 0;
 }
 
 main #projects #project-cards-container .project-card-wrapper, main #projects #project-cards-container .project-card-wrapper--open {
   cursor: pointer;
   display: inline-block;
-  height: 80vh;
+  height: 75%;
   margin: 0 0.5rem;
   overflow: hidden;
   position: relative;
+  top: 5%;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   width: 50%;
@@ -1390,7 +1399,7 @@ main #projects #project-cards-container .project-card-wrapper .project-card, mai
   display: grid;
   -ms-grid-rows: auto 1fr auto auto;
       grid-template-rows: auto 1fr auto auto;
-  height: inherit;
+  height: 100%;
   padding: 0.5rem;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -1415,7 +1424,6 @@ main #projects #project-cards-container .project-card-wrapper .project-card .pro
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.5em;
-  padding-right: 20%;
   text-transform: uppercase;
   -webkit-transform-origin: bottom left;
           transform-origin: bottom left;
