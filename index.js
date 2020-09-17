@@ -1,626 +1,406 @@
-// ******************************************************************
-// *** 00.                                 Window Dimensions Listener
-// ******************************************************************
-let windowDimensions = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-}
+let windowDimensions = { width: window.innerWidth, height: window.innerHeight }
 window.addEventListener(
   'resize',
   () => {
-    windowDimensions = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    }
+    windowDimensions = { width: window.innerWidth, height: window.innerHeight }
   },
-  false
+  !1
 )
-
-// ******************************************************************
-// *** 00.                                    Hamburger Icon Listener
-// ******************************************************************
-
-const HAMBURGER = document.querySelector('#hamburger')
-const MAIN_NAV = document.querySelector('#main-nav')
-let navIsOpen = false
-
+const HAMBURGER = document.querySelector('#hamburger'),
+  MAIN_NAV = document.querySelector('#main-nav')
+let navIsOpen = !1
 const navOpenClose = () => {
-  if (!navIsOpen) {
-    HAMBURGER.classList.replace('hamburger', 'hamburger--open')
-    MAIN_NAV.classList.replace('main-nav', 'main-nav--open')
-  } else {
-    HAMBURGER.classList.replace('hamburger--open', 'hamburger')
-    MAIN_NAV.classList.replace('main-nav--open', 'main-nav')
-  }
+  navIsOpen
+    ? (HAMBURGER.classList.replace('hamburger--open', 'hamburger'),
+      MAIN_NAV.classList.replace('main-nav--open', 'main-nav'))
+    : (HAMBURGER.classList.replace('hamburger', 'hamburger--open'),
+      MAIN_NAV.classList.replace('main-nav', 'main-nav--open'))
 }
 HAMBURGER.addEventListener(
   'click',
   () => {
-    navOpenClose()
-    navIsOpen = !navIsOpen
+    navIsOpen
+      ? (HAMBURGER.classList.replace('hamburger--open', 'hamburger'),
+        MAIN_NAV.classList.replace('main-nav--open', 'main-nav'))
+      : (HAMBURGER.classList.replace('hamburger', 'hamburger--open'),
+        MAIN_NAV.classList.replace('main-nav', 'main-nav--open')),
+      (navIsOpen = !navIsOpen)
   },
-  false
+  !1
 )
-
-// ******************************************************************
-// *** 00.                                   Handle Nav On Link Click
-// ******************************************************************
-
 const NAV_LINKS = document.querySelectorAll('#main-nav ul li')
-NAV_LINKS.forEach(a => {
-  a.addEventListener(
+NAV_LINKS.forEach(e => {
+  e.addEventListener(
     'click',
     () => {
-      HAMBURGER.classList.replace('hamburger--open', 'hamburger')
-      MAIN_NAV.classList.replace('main-nav--open', 'main-nav')
-      navIsOpen = false
+      HAMBURGER.classList.replace('hamburger--open', 'hamburger'),
+        MAIN_NAV.classList.replace('main-nav--open', 'main-nav'),
+        (navIsOpen = !1)
     },
-    false
+    !1
   )
 })
-
-// ******************************************************************
-// *** 00.                                   Create Element Functions
-// ******************************************************************
-
-// ***** create element with class *****
-const createClassElement = (type, className, text) => {
-  const element = document.createElement(type)
-  className ? element.classList.add(className) : null
-  text ? (element.textContent = text) : null
-
-  return element
-}
-
-// ***** create image element *****
-const createImg = (src, alt, className) => {
-  const image = document.createElement('img')
-  className ? image.classList.add(className) : null
-  image.src = src
-  image.setAttribute('alt', alt)
-
-  return image
-}
-
-// ***** create container for language icon *****
-const createLanguageContainer = (src, key) => {
-  const title = key.replace('lang_', '').replace('_', ' ')
-
-  const container = createClassElement('div', 'lang-container')
-  const img = createImg(src, title, '')
-  container.appendChild(img)
-  const project_title = createClassElement('p', '', title)
-  container.appendChild(project_title)
-
-  return container
-}
-
-// ***** create a link to external site *****
-const createExternalButton = (text, className, url) => {
-  const button = createClassElement('a', className)
-  if (url) {
-    button.setAttribute('href', url)
-    button.setAttribute('target', '_blank')
-    button.setAttribute('rel', 'noreferrer noopenner')
-  }
-  button.textContent = text
-
-  return button
-}
-
-// ******************************************************************
-// *** 00.                                      Project Card Creation
-// ******************************************************************
-
-// ***** open card when clicked *****
-const openProjectCard = e => {
-  const cardClass = e.parentElement.classList.value
-
-  cardClass.includes('--open')
-    ? e.parentElement.classList.remove('project-card-wrapper--open')
-    : e.parentElement.classList.add('project-card-wrapper--open')
-}
-
-// ***** create project cards *****
-const PROJECT_CARDS_ARRAY = []
-const PROJECT_CARDS_CONTAINER = document.querySelector(
-  '#project-cards-container'
-)
-const createProjectCard = (
-  projectSlug,
-  projectTitle,
-  projectType,
-  content,
-  screenshot,
-  icon,
-  languages,
-  index,
-  project_url,
-  github_url,
-  underDevelopment
-) => {
-  // convert single digit numbers to double
-  const doubleDigit = index + 1 < 10 ? `0${index + 1}` : `${index + 1}`
-
-  const wrapper = createClassElement('div', 'project-card-wrapper')
-  // wrapper.setAttribute("onclick", "openProjectCard(this); return false;")
-  const card = createClassElement('div', 'project-card')
-  card.setAttribute('onclick', 'openProjectCard(this); return false;')
-  wrapper.appendChild(card)
-  const number = createClassElement('div', 'project-number', doubleDigit)
-  card.appendChild(number)
-  const blank = createClassElement('div', '')
-  card.appendChild(blank)
-  const title = createClassElement('h1', 'project-title', projectTitle)
-  card.appendChild(title)
-  const type = createClassElement('h3', 'project-type', projectType)
-  card.appendChild(type)
-  const details = createClassElement('div', 'project-details')
-  wrapper.appendChild(details)
-  const project_logo = createImg(icon, 'project logo', 'project-logo')
-  details.appendChild(project_logo)
-  const screenshot_wrapper = createClassElement(
-    'div',
-    'project-screenshot-wrapper'
-  )
-  details.appendChild(screenshot_wrapper)
-  const project_screenshot = createImg(
-    screenshot,
-    'project sreenshot',
-    'project-screenshot'
-  )
-  screenshot_wrapper.appendChild(project_screenshot)
-  const second_title = createClassElement('h3', '')
-  details.appendChild(second_title)
-  const project_text = createClassElement('div', 'project-text')
-  project_text.innerHTML = content
-  details.appendChild(project_text)
-  const created_with = createClassElement('div', 'created-with')
-  details.appendChild(created_with)
-  const created_header = createClassElement('h3', '', 'Created With')
-  created_with.appendChild(created_header)
-
-  languages.forEach(lang => {
-    const langEntry = createLanguageContainer(lang[1].imgix_url, lang[0])
-    created_with.appendChild(langEntry)
-  })
-
-  const button_container = createClassElement('div', 'buttons')
-  details.appendChild(button_container)
-  const project_button = underDevelopment
-    ? createExternalButton('Visit Site', 'button')
-    : createExternalButton('Visit Site', 'button', project_url)
-  button_container.appendChild(project_button)
-
-  // github button
-  const github_button = createExternalButton(
-    'View On Github',
-    'button--secondary',
-    github_url
-  )
-  button_container.appendChild(github_button)
-
-  // create modal to display when project is under development
-  let developmentModal = createClassElement('div', 'development-modal')
-  developmentModal.setAttribute('id', `modal-${projectSlug}`)
-
-  let modalParagraph_1 = createClassElement('p')
-  modalParagraph_1.textContent =
-    "I'm currently working on this site so some or all of the features may not work."
-  developmentModal.appendChild(modalParagraph_1)
-
-  let modalParagraph_2 = createClassElement('p')
-  modalParagraph_2.textContent =
-    'Do you want to try and visit anyway? You can always come back!'
-  developmentModal.appendChild(modalParagraph_2)
-
-  let remainButton = document.createElement('button')
-  remainButton.classList.add('button--danger')
-  remainButton.classList.add('button')
-  remainButton.textContent = 'NO'
-  remainButton.addEventListener(
-    'click',
-    () => {
-      developmentModal.style.visibility = 'hidden'
-      developmentModal.style.top = '-300vh'
-    },
-    false
-  )
-  developmentModal.appendChild(remainButton)
-
-  let continueButton = createExternalButton(
-    'YES',
-    'button--secondary',
-    project_url
-  )
-  continueButton.classList.add('button')
-  developmentModal.appendChild(continueButton)
-
-  project_button.addEventListener(
-    'click',
-    () => {
-      if (underDevelopment) {
-        let modal = document.querySelector(`#modal-${projectSlug}`)
-        console.log(modal)
-        modal.style.visibility = 'visible'
-        modal.style.top = '0.5rem'
-      }
-    },
-    false
-  )
-  details.appendChild(developmentModal)
-  details.appendChild(developmentModal)
-
-  // display banner if under development
-  if (underDevelopment) {
-    let dev_banner = createClassElement(
-      'div',
-      'under-development-banner',
-      'Under Development'
+const createClassElement = (e, t, a) => {
+    const n = document.createElement(e)
+    return t && n.classList.add(t), a && (n.textContent = a), n
+  },
+  createImg = (e, t, a) => {
+    const n = document.createElement('img')
+    return a && n.classList.add(a), (n.src = e), n.setAttribute('alt', t), n
+  },
+  createLanguageContainer = (e, t) => {
+    const a = t.replace('lang_', '').replace('_', ' '),
+      n = createClassElement('div', 'lang-container'),
+      r = createImg(e, a, '')
+    n.appendChild(r)
+    const l = createClassElement('p', '', a)
+    return n.appendChild(l), n
+  },
+  createExternalButton = (e, t, a) => {
+    const n = createClassElement('a', t)
+    return (
+      a &&
+        (n.setAttribute('href', a),
+        n.setAttribute('target', '_blank'),
+        n.setAttribute('rel', 'noreferrer noopenner')),
+      (n.textContent = e),
+      n
     )
-    details.appendChild(dev_banner)
-  }
-
-  PROJECT_CARDS_ARRAY.push(wrapper)
-  PROJECT_CARDS_CONTAINER.appendChild(wrapper)
-}
-
-// ******************************************************************
-// *** 00.                                    Blog Post Card Creation
-// ******************************************************************
-
-// ***** create blog post cards *****
-const BLOG_CARDS_CONTAINER = document.querySelector('#blog-list')
-
-const createBlogCard = (slug, title, src, tags, blurb, content) => {
-  const wrapper = createClassElement('div', 'blog-post-card')
-  wrapper.setAttribute('id', `blog-${slug}`)
-  const imageContainer = createClassElement('div', 'image-container')
-  wrapper.appendChild(imageContainer)
-  const img = createClassElement('img')
-  img.src = src
-  img.setAttribute('alt', title)
-  imageContainer.appendChild(img)
-  const header = createClassElement('h1', 'blog-title', title)
-  wrapper.appendChild(header)
-  const tagContainer = createClassElement('div', 'blog-tags')
-  wrapper.appendChild(tagContainer)
-  tags.forEach(tag => {
-    let topicTag = createClassElement(
-      'span',
-      `tag--${tag.toLowerCase()}`,
-      tag === 'Styled' ? 'Styled Components' : tag
-    )
-    topicTag.classList.add('tag')
-    tagContainer.appendChild(topicTag)
-  })
-  const blurbText = createClassElement('p', 'blurb', blurb)
-  wrapper.appendChild(blurbText)
-  const button = createClassElement('button', 'button--secondary', 'READ MORE')
-  button.setAttribute('value', slug)
-  button.addEventListener(
-    'click',
-    () => {
-      let open = wrapper.classList.value.includes('blog-post-card--open')
-      if (open) {
-        wrapper.classList.remove('blog-post-card--open')
-        button.textContent = 'READ MORE'
-      } else {
-        wrapper.classList.add('blog-post-card--open')
-        button.textContent = 'CLOSE'
-      }
-    },
-    false
-  )
-  wrapper.appendChild(button)
-  const blogContent = createClassElement('article', 'blog-content')
-  blogContent.innerHTML = content
-  wrapper.appendChild(blogContent)
-  const toTop = createClassElement('button', 'button--secondary', 'Back To Top')
-  toTop.addEventListener(
-    'click',
-    () => {
-      imageContainer.scrollIntoView()
-    },
-    false
-  )
-  blogContent.appendChild(toTop)
-  BLOG_CARDS_CONTAINER.appendChild(wrapper)
-}
-
-// ******************************************************************
-// *** 00.                                              Async Fetches
-// ******************************************************************
-
-// ***** fetch Project Cards data from CosmicJS *****
-// ! using generic fetch function affects transform of cards
-let projectDataLoading = true
-const LOADING_SPINNER = document.querySelector('#spinner-container')
-
-const COSMIC_API_KEY = 'N6C2ydBXJRnJGr5xKPQfW16ea2qANsnZoNgLzW5hXvAUIjN8FY'
-
-const projectData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=projects&read_key=${COSMIC_API_KEY}&limit=20&props=slug,title,content,metadata,`
-const fetchProjectData = async url => {
-  try {
-    const res = await fetch(url)
-    const data = await res.json()
-    await data.objects.forEach((object, i) => {
-      const objectEntries = Object.entries(object.metadata)
-        .filter(entry => entry[0].substr(0, 5) === 'lang_')
-        .filter(entry => entry[1].url !== null)
-
-      createProjectCard(
-        object.slug,
-        object.title,
-        object.metadata.project_type,
-        object.content,
-        object.metadata.project_screenshot.imgix_url,
-        object.metadata.project_icon.imgix_url,
-        objectEntries,
-        i,
-        object.metadata.project_url,
-        object.metadata.github_url,
-        object.metadata.under_development
-      )
-
-      LOADING_SPINNER.style.display = 'none'
-      projectDataLoading = false
-    })
-  } catch (err) {
-    console.log('Project Data Error', err)
-  }
-}
-fetchProjectData(projectData)
-
-// ***** reusable fetch function *****
-// url: fetch url
-// affix: location in object of array
-// action: function to run in forEach on each object in array
-// loading: loading boolean
-// loader: spinner/loader assigned to action
-const fetchData = async (url, affix, action, loading, loader) => {
-  try {
-    const res = await fetch(url)
-    const data = await res.json()
-    await data[affix].forEach((object, i) => {
-      action(object, i)
-    })
-    loader ? (loader.style.display = 'none') : null
-    loading = false
-  } catch (err) {
-    console.log(`ERROR:`, err)
-  }
-}
-
-// ***** fetch Blog List data from CosmicJS *****
-let blogListDataLoading = true
-const blogListData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=blogposts&read_key=${COSMIC_API_KEY}&limit=20&props=slug,title,content,metadata,`
-const fetchedBlogListAction = (object, i) => {
-  createBlogCard(
-    object.slug,
-    object.title,
-    object.metadata.post_image.imgix_url,
-    object.metadata.tags,
-    object.metadata.blurb,
-    object.content
-  )
-}
-fetchData(blogListData, 'objects', fetchedBlogListAction, blogListDataLoading)
-
-// ******************************************************************
-// *** 00.                                 Async Determined Functions
-// ******************************************************************
-
-// ***** rearrage z-index of cards in reverse order *****
-const arrangeProjectCards = () => {
-  let j = PROJECT_CARDS_ARRAY.length
-  for (let i = 0; i < PROJECT_CARDS_ARRAY.length; i++) {
-    PROJECT_CARDS_ARRAY[i].style.zIndex = j
-    j--
-  }
-}
-
-// ***** actions restricted until loading complete
-const isLoading = setInterval(() => {
-  if (!projectDataLoading) {
-    clearInterval(isLoading)
-
-    arrangeProjectCards()
-
-    // ***** flip cards on scroll *****
-    document.querySelector('#project-cards-container').addEventListener(
-      'scroll',
-      () => {
-        PROJECT_CARDS_ARRAY.forEach((card, i) => {
-          if (card.getBoundingClientRect().x <= windowDimensions.width * 0.45) {
-            card.style.transform = 'rotateY(0)'
-          } else {
-            card.style.transform = 'rotateY(-50deg)'
+  },
+  openProjectCard = e => {
+    e.parentElement.classList.value.includes('--open')
+      ? e.parentElement.classList.remove('project-card-wrapper--open')
+      : e.parentElement.classList.add('project-card-wrapper--open')
+  },
+  PROJECT_CARDS_ARRAY = [],
+  PROJECT_CARDS_CONTAINER = document.querySelector('#project-cards-container'),
+  createProjectCard = (e, t, a, n, r, l, o, s, c, i, d) => {
+    const p = s + 1 < 10 ? `0${s + 1}` : `${s + 1}`,
+      m = createClassElement('div', 'project-card-wrapper'),
+      u = createClassElement('div', 'project-card')
+    u.setAttribute('onclick', 'openProjectCard(this); return false;'),
+      m.appendChild(u)
+    const C = createClassElement('div', 'project-number', p)
+    u.appendChild(C)
+    const h = createClassElement('div', '')
+    u.appendChild(h)
+    const E = createClassElement('h1', 'project-title', t)
+    u.appendChild(E)
+    const A = createClassElement('h3', 'project-type', a)
+    u.appendChild(A)
+    const R = createClassElement('div', 'project-details')
+    m.appendChild(R)
+    const g = createImg(l, 'project logo', 'project-logo')
+    R.appendChild(g)
+    const _ = createClassElement('div', 'project-screenshot-wrapper')
+    R.appendChild(_)
+    const v = createImg(r, 'project sreenshot', 'project-screenshot')
+    _.appendChild(v)
+    const L = createClassElement('h3', '')
+    R.appendChild(L)
+    const b = createClassElement('div', 'project-text')
+    ;(b.innerHTML = n), R.appendChild(b)
+    const y = createClassElement('div', 'created-with')
+    R.appendChild(y)
+    const w = createClassElement('h3', '', 'Created With')
+    y.appendChild(w),
+      o.forEach(e => {
+        const t = createLanguageContainer(e[1].imgix_url, e[0])
+        y.appendChild(t)
+      })
+    const S = createClassElement('div', 'buttons')
+    R.appendChild(S)
+    const O = d
+      ? createExternalButton('Visit Site', 'button')
+      : createExternalButton('Visit Site', 'button', c)
+    S.appendChild(O)
+    const D = createExternalButton('View On Github', 'button--secondary', i)
+    S.appendChild(D)
+    let I = createClassElement('div', 'development-modal')
+    I.setAttribute('id', `modal-${e}`)
+    let f = createClassElement('p')
+    ;(f.textContent =
+      "I'm currently working on this site so some or all of the features may not work."),
+      I.appendChild(f)
+    let j = createClassElement('p')
+    ;(j.textContent =
+      'Do you want to try and visit anyway? You can always come back!'),
+      I.appendChild(j)
+    let N = document.createElement('button')
+    N.classList.add('button--danger'),
+      N.classList.add('button'),
+      (N.textContent = 'NO'),
+      N.addEventListener(
+        'click',
+        () => {
+          ;(I.style.visibility = 'hidden'), (I.style.top = '-300vh')
+        },
+        !1
+      ),
+      I.appendChild(N)
+    let T = createExternalButton('YES', 'button--secondary', c)
+    if (
+      (T.classList.add('button'),
+      I.appendChild(T),
+      O.addEventListener(
+        'click',
+        () => {
+          if (d) {
+            let t = document.querySelector(`#modal-${e}`)
+            console.log(t),
+              (t.style.visibility = 'visible'),
+              (t.style.top = '0.5rem')
           }
-        })
+        },
+        !1
+      ),
+      R.appendChild(I),
+      R.appendChild(I),
+      d)
+    ) {
+      let e = createClassElement(
+        'div',
+        'under-development-banner',
+        'Under Development'
+      )
+      R.appendChild(e)
+    }
+    PROJECT_CARDS_ARRAY.push(m), PROJECT_CARDS_CONTAINER.appendChild(m)
+  },
+  BLOG_CARDS_CONTAINER = document.querySelector('#blog-list'),
+  createBlogCard = (e, t, a, n, r, l) => {
+    const o = createClassElement('div', 'blog-post-card')
+    o.setAttribute('id', `blog-${e}`)
+    const s = createClassElement('div', 'image-container')
+    o.appendChild(s)
+    const c = createClassElement('img')
+    ;(c.src = a), c.setAttribute('alt', t), s.appendChild(c)
+    const i = createClassElement('h1', 'blog-title', t)
+    o.appendChild(i)
+    const d = createClassElement('div', 'blog-tags')
+    o.appendChild(d),
+      n.forEach(e => {
+        let t = createClassElement(
+          'span',
+          `tag--${e.toLowerCase()}`,
+          'Styled' === e ? 'Styled Components' : e
+        )
+        t.classList.add('tag'), d.appendChild(t)
+      })
+    const p = createClassElement('p', 'blurb', r)
+    o.appendChild(p)
+    const m = createClassElement('button', 'button--secondary', 'READ MORE')
+    m.setAttribute('value', e),
+      m.addEventListener(
+        'click',
+        () => {
+          o.classList.value.includes('blog-post-card--open')
+            ? (o.classList.remove('blog-post-card--open'),
+              (m.textContent = 'READ MORE'))
+            : (o.classList.add('blog-post-card--open'),
+              (m.textContent = 'CLOSE'))
+        },
+        !1
+      ),
+      o.appendChild(m)
+    const u = createClassElement('article', 'blog-content')
+    ;(u.innerHTML = l), o.appendChild(u)
+    const C = createClassElement('button', 'button--secondary', 'Back To Top')
+    C.addEventListener(
+      'click',
+      () => {
+        s.scrollIntoView()
       },
-      false
-    )
-    PROJECT_CARDS_ARRAY[0].style.transform = 'rotateY(0)'
+      !1
+    ),
+      u.appendChild(C),
+      BLOG_CARDS_CONTAINER.appendChild(o)
   }
-}, 500)
-
-// ******************************************************************
-// *** 00.                                     Project Scroll Actions
-// ******************************************************************
-
-// scroll buttons for project tiles
-const prevButton = document.querySelector('#previous-project-btn')
-const nextButton = document.querySelector('#next-project-btn')
-
+let projectDataLoading = !0
+const LOADING_SPINNER = document.querySelector('#spinner-container'),
+  COSMIC_API_KEY = 'N6C2ydBXJRnJGr5xKPQfW16ea2qANsnZoNgLzW5hXvAUIjN8FY',
+  projectData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=projects&read_key=${COSMIC_API_KEY}&limit=20&props=slug,title,content,metadata,`,
+  fetchProjectData = async e => {
+    try {
+      const t = await fetch(e),
+        a = await t.json()
+      await a.objects.forEach((e, t) => {
+        const a = Object.entries(e.metadata)
+          .filter(e => 'lang_' === e[0].substr(0, 5))
+          .filter(e => null !== e[1].url)
+        createProjectCard(
+          e.slug,
+          e.title,
+          e.metadata.project_type,
+          e.content,
+          e.metadata.project_screenshot.imgix_url,
+          e.metadata.project_icon.imgix_url,
+          a,
+          t,
+          e.metadata.project_url,
+          e.metadata.github_url,
+          e.metadata.under_development
+        ),
+          (LOADING_SPINNER.style.display = 'none'),
+          (projectDataLoading = !1)
+      })
+    } catch (e) {
+      console.log('Project Data Error', e)
+    }
+  }
+fetchProjectData(projectData)
+const fetchData = async (e, t, a, n, r) => {
+  try {
+    const n = await fetch(e),
+      l = await n.json()
+    await l[t].forEach((e, t) => {
+      a(e, t)
+    }),
+      r && (r.style.display = 'none'),
+      !1
+  } catch (e) {
+    console.log('ERROR:', e)
+  }
+}
+let blogListDataLoading = !0
+const blogListData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=blogposts&read_key=${COSMIC_API_KEY}&limit=20&props=slug,title,content,metadata,`,
+  fetchedBlogListAction = (e, t) => {
+    createBlogCard(
+      e.slug,
+      e.title,
+      e.metadata.post_image.imgix_url,
+      e.metadata.tags,
+      e.metadata.blurb,
+      e.content
+    )
+  }
+fetchData(blogListData, 'objects', fetchedBlogListAction)
+const arrangeProjectCards = () => {
+    let e = PROJECT_CARDS_ARRAY.length
+    for (let t = 0; t < PROJECT_CARDS_ARRAY.length; t++)
+      (PROJECT_CARDS_ARRAY[t].style.zIndex = e), e--
+  },
+  isLoading = setInterval(() => {
+    projectDataLoading ||
+      (clearInterval(isLoading),
+      arrangeProjectCards(),
+      document.querySelector('#project-cards-container').addEventListener(
+        'scroll',
+        () => {
+          PROJECT_CARDS_ARRAY.forEach((e, t) => {
+            e.getBoundingClientRect().x <= 0.45 * windowDimensions.width
+              ? (e.style.transform = 'rotateY(0)')
+              : (e.style.transform = 'rotateY(-50deg)')
+          })
+        },
+        !1
+      ),
+      (PROJECT_CARDS_ARRAY[0].style.transform = 'rotateY(0)'))
+  }, 500),
+  prevButton = document.querySelector('#previous-project-btn'),
+  nextButton = document.querySelector('#next-project-btn')
 let currentInView = 0
-
 const nextAction = () => {
-  let startOffset = PROJECT_CARDS_ARRAY[0].offsetLeft
-
-  if (currentInView < PROJECT_CARDS_ARRAY.length - 1) {
-    let nextElementOffset = PROJECT_CARDS_ARRAY[currentInView + 1].offsetLeft
-
-    PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - startOffset
-    currentInView += 1
-  } else {
-    PROJECT_CARDS_CONTAINER.scrollLeft = startOffset - 8
-    currentInView = 0
+    let e = PROJECT_CARDS_ARRAY[0].offsetLeft
+    if (currentInView < PROJECT_CARDS_ARRAY.length - 1) {
+      let t = PROJECT_CARDS_ARRAY[currentInView + 1].offsetLeft
+      ;(PROJECT_CARDS_CONTAINER.scrollLeft = t - e), (currentInView += 1)
+    } else (PROJECT_CARDS_CONTAINER.scrollLeft = e - 8), (currentInView = 0)
+  },
+  previousAction = () => {
+    let e = PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1].offsetLeft
+    if (currentInView > 0) {
+      let e = PROJECT_CARDS_ARRAY[currentInView - 1].offsetLeft
+      ;(PROJECT_CARDS_CONTAINER.scrollLeft = e - 8), (currentInView -= 1)
+    } else
+      (PROJECT_CARDS_CONTAINER.scrollLeft = e),
+        (currentInView = PROJECT_CARDS_ARRAY.length - 1)
   }
-}
-
-const previousAction = () => {
-  let startOffset =
-    PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1].offsetLeft
-
-  if (currentInView > 0) {
-    let nextElementOffset = PROJECT_CARDS_ARRAY[currentInView - 1].offsetLeft
-    PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - 8
-    currentInView -= 1
-  } else {
-    PROJECT_CARDS_CONTAINER.scrollLeft = startOffset
-    currentInView = PROJECT_CARDS_ARRAY.length - 1
-  }
-}
-
-// ******************************************************************
-// *** 00.                                      Project Swipe Actions
-// ******************************************************************
-
 let xDown = (yDown = null)
-
-const getTouches = e => e.touches
-
-const handleTouchStart = e => {
-  const firstTouch = getTouches(e)[0]
-  xDown = firstTouch.clientX
-  yDown = firstTouch.clientY
-}
-
-const handleTouchMove = e => {
-  if (!xDown || !yDown) return
-
-  let xUp = e.touches[0].clientX
-  let yUp = e.touches[0].clientY
-
-  let xDiff = xDown - xUp
-  let yDiff = yDown - yUp
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    /*most significant*/
-    if (xDiff > 0) {
-      nextAction()
-    } else {
-      previousAction()
-    }
-  }
-  xDown = null
-  yDown = null
-}
-
-const awaitProjectLoad = setInterval(() => {
-  if (!projectDataLoading) {
-    clearInterval(awaitProjectLoad)
-
-    nextButton.addEventListener('click', nextAction, false)
-    prevButton.addEventListener('click', previousAction, false)
-    PROJECT_CARDS_CONTAINER.addEventListener(
-      'touchstart',
-      handleTouchStart,
-      false
-    )
-    PROJECT_CARDS_CONTAINER.addEventListener(
-      'touchmove',
-      handleTouchMove,
-      false
-    )
-  }
-}, 500)
-
-// ******************************************************************
-// *** 00.                                            Form Validation
-// ******************************************************************
-
-let nameValid = false
-let emailValid = false
-let messageValid = false
-
-const validateField = (e, type) => {
-  let input = e.target.value
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-  const enableSubmit = () => {
-    nameValid && emailValid && messageValid
-      ? (document.querySelector('#form-submit').disabled = false)
-      : (document.querySelector('#form-submit').disabled = true)
-  }
-
-  if (type === 'text' && input) {
-    if (input.length < 2) {
-      nameValid = false
-    } else {
-      nameValid = true
-    }
-  } else if (type === 'email' && input) {
-    if (!re.test(String(input).toLocaleLowerCase())) {
-      emailValid = false
-    } else {
-      emailValid = true
-    }
-  } else if (type === 'textarea' && input) {
-    if (input.length < 10) {
-      messageValid = false
-    } else {
-      messageValid = true
-    }
-  }
-
-  const EMAIL_ERROR_CONTAINER = document.querySelector('#email-error')
-  const NAME_ERROR_CONTAINER = document.querySelector('#name-error')
-  const MSG_ERROR_CONTAINER = document.querySelector('#message-error')
-
-  !nameValid
-    ? ((NAME_ERROR_CONTAINER.style.height = '2rem'),
-      (NAME_ERROR_CONTAINER.innerText = 'Use at least two characters'))
-    : (NAME_ERROR_CONTAINER.style.height = '0')
-
-  !emailValid
-    ? ((EMAIL_ERROR_CONTAINER.style.height = '2rem'),
-      (EMAIL_ERROR_CONTAINER.innerText =
-        'Make sure this is a valid email address'))
-    : (EMAIL_ERROR_CONTAINER.style.height = '0')
-
-  !messageValid
-    ? ((MSG_ERROR_CONTAINER.style.height = '2rem'),
-      (MSG_ERROR_CONTAINER.innerText = 'How about something a bit longer?'))
-    : (MSG_ERROR_CONTAINER.style.height = '0')
-
-  enableSubmit()
-}
-
-const FORM_NAME = document.querySelector('#form-name')
-const FORM_EMAIL = document.querySelector('#form-email')
-const FORM_MESSAGE = document.querySelector('#form-message')
-
-// *****
+const getTouches = e => e.touches,
+  handleTouchStart = e => {
+    const t = getTouches(e)[0]
+    ;(xDown = t.clientX), (yDown = t.clientY)
+  },
+  handleTouchMove = e => {
+    if (!xDown || !yDown) return
+    let t = e.touches[0].clientX,
+      a = e.touches[0].clientY,
+      n = xDown - t,
+      r = yDown - a
+    Math.abs(n) > Math.abs(r) && (n > 0 ? nextAction() : previousAction()),
+      (xDown = null),
+      (yDown = null)
+  },
+  awaitProjectLoad = setInterval(() => {
+    projectDataLoading ||
+      (clearInterval(awaitProjectLoad),
+      nextButton.addEventListener('click', nextAction, !1),
+      prevButton.addEventListener('click', previousAction, !1),
+      PROJECT_CARDS_CONTAINER.addEventListener(
+        'touchstart',
+        handleTouchStart,
+        !1
+      ),
+      PROJECT_CARDS_CONTAINER.addEventListener(
+        'touchmove',
+        handleTouchMove,
+        !1
+      ))
+  }, 500)
+let nameValid = !1,
+  emailValid = !1,
+  messageValid = !1
+const validateField = (e, t) => {
+    let a = e.target.value
+    const n = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    'text' === t && a
+      ? (nameValid = !(a.length < 2))
+      : 'email' === t && a
+      ? (emailValid = !!n.test(String(a).toLocaleLowerCase()))
+      : 'textarea' === t && a && (messageValid = !(a.length < 10))
+    const r = document.querySelector('#email-error'),
+      l = document.querySelector('#name-error'),
+      o = document.querySelector('#message-error')
+    nameValid
+      ? (l.style.height = '0')
+      : ((l.style.height = '2rem'),
+        (l.innerText = 'Use at least two characters')),
+      emailValid
+        ? (r.style.height = '0')
+        : ((r.style.height = '2rem'),
+          (r.innerText = 'Make sure this is a valid email address')),
+      messageValid
+        ? (o.style.height = '0')
+        : ((o.style.height = '2rem'),
+          (o.innerText = 'How about something a bit longer?')),
+      (document.querySelector('#form-submit').disabled = !(
+        nameValid &&
+        emailValid &&
+        messageValid
+      ))
+  },
+  FORM_NAME = document.querySelector('#form-name'),
+  FORM_EMAIL = document.querySelector('#form-email'),
+  FORM_MESSAGE = document.querySelector('#form-message')
 FORM_NAME.addEventListener(
   'input',
   e => {
     validateField(e, 'text')
   },
-  false
-)
-FORM_EMAIL.addEventListener(
-  'input',
-  e => {
-    validateField(e, 'email')
-  },
-  false
-)
-FORM_MESSAGE.addEventListener(
-  'input',
-  e => {
-    validateField(e, 'textarea')
-  },
-  false
-)
+  !1
+),
+  FORM_EMAIL.addEventListener(
+    'input',
+    e => {
+      validateField(e, 'email')
+    },
+    !1
+  ),
+  FORM_MESSAGE.addEventListener(
+    'input',
+    e => {
+      validateField(e, 'textarea')
+    },
+    !1
+  )
