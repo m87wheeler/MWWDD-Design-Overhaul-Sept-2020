@@ -9,15 +9,6 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
-body {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 body {
   background-color: #fff;
   color: #231f20;
@@ -1729,6 +1720,184 @@ main #contact #contact-form .form-error {
 
 main #contact #contact-form .form-error--open {
   height: 2rem;
+}
+
+main #blog {
+  padding-bottom: 3rem;
+  position: relative;
+}
+
+main #blog #blog-list .blog-post-card {
+  background: #fff;
+  border: 3px solid #231f20;
+  margin: 0 5% 1rem;
+  overflow-x: hidden;
+  -webkit-transition: width 0.3s ease-in-out, border 0.3s ease-in-out, margin 0.3s ease-in-out, background 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, border 0.3s ease-in-out, margin 0.3s ease-in-out, background 0.3s ease-in-out;
+  width: 90%;
+}
+
+main #blog #blog-list .blog-post-card .image-container {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  width: 100%;
+}
+
+main #blog #blog-list .blog-post-card .image-container img {
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+main #blog #blog-list .blog-post-card h1 {
+  margin: 1rem;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 0 1rem;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags .tag {
+  color: #fff;
+  font-size: 0.75rem;
+  margin: 0.125rem;
+  padding: 0.25rem 0.5rem;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags .tag--html, main #blog #blog-list .blog-post-card .blog-tags .tag--javascript {
+  background: #ffa520;
+  color: #231f20;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags .tag--css, main #blog #blog-list .blog-post-card .blog-tags .tag--typescript, main #blog #blog-list .blog-post-card .blog-tags .tag--react, main #blog #blog-list .blog-post-card .blog-tags .tag--cms {
+  background: #0068aa;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags .tag--scss {
+  background: #cf649a;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags .tag--styled, main #blog #blog-list .blog-post-card .blog-tags .tag--gatsby, main #blog #blog-list .blog-post-card .blog-tags .tag--figma {
+  background: #ce3434;
+}
+
+main #blog #blog-list .blog-post-card .blog-tags .tag--inkscape {
+  background: #231f20;
+}
+
+main #blog #blog-list .blog-post-card .blurb {
+  line-height: 1.5em;
+  min-height: 4rem;
+  margin: 1rem 1rem 2rem;
+  opacity: 1;
+  text-align: justify;
+  -webkit-transition: min-height 0.3s ease-in-out, opacity 0.5s ease-in-out, font-weight 0.3s ease-in-out;
+  transition: min-height 0.3s ease-in-out, opacity 0.5s ease-in-out, font-weight 0.3s ease-in-out;
+}
+
+main #blog #blog-list .blog-post-card button {
+  display: block;
+  margin: 1rem auto;
+  width: 10rem;
+}
+
+main #blog #blog-list .blog-post-card .blog-content {
+  display: none;
+  opacity: 0;
+  height: 0;
+  max-height: 0;
+}
+
+main #blog #blog-list .blog-post-card--open {
+  border: 3px solid transparent;
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+main #blog #blog-list .blog-post-card--open .blurb {
+  font-weight: 500;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content {
+  display: block;
+  height: auto;
+  max-height: 50000vh;
+  opacity: 1;
+  padding: 1rem;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content br {
+  display: none;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content h3 {
+  margin: 2rem 0 1rem;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content p {
+  line-height: 1.5em;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content p img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 2rem auto;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content p code {
+  overflow-y: scroll;
+}
+
+@media (min-width: 700px) {
+  main #blog #blog-list {
+    width: 60%;
+    margin: 0 20%;
+  }
+}
+
+@media (min-width: 1280px) {
+  main #blog #blog-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0 5%;
+    width: 90%;
+  }
+  main #blog #blog-list .blog-post-card {
+    width: 32%;
+    margin: 0.5rem 0;
+  }
+}
+
+@media (min-width: 1600px) {
+  main #blog #blog-list .blog-post-card {
+    width: 30%;
+  }
 }
 
 footer {

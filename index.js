@@ -266,14 +266,72 @@ const createProjectCard = (
 }
 
 // ******************************************************************
+// *** 00.                                    Blog Post Card Creation
+// ******************************************************************
+
+// ***** create blog post cards *****
+const BLOG_CARDS_CONTAINER = document.querySelector('#blog-list')
+
+const createBlogCard = (slug, title, src, tags, blurb, content) => {
+  const wrapper = createClassElement('div', 'blog-post-card')
+  wrapper.setAttribute('id', `blog-${slug}`)
+  const imageContainer = createClassElement('div', 'image-container')
+  wrapper.appendChild(imageContainer)
+  const img = createClassElement('img')
+  img.src = src
+  img.setAttribute('alt', title)
+  imageContainer.appendChild(img)
+  const header = createClassElement('h1', 'blog-title', title)
+  wrapper.appendChild(header)
+  const tagContainer = createClassElement('div', 'blog-tags')
+  wrapper.appendChild(tagContainer)
+  tags.forEach(tag => {
+    let topicTag = createClassElement(
+      'span',
+      `tag--${tag.toLowerCase()}`,
+      tag === 'Styled' ? 'Styled Components' : tag
+    )
+    topicTag.classList.add('tag')
+    tagContainer.appendChild(topicTag)
+  })
+  const blurbText = createClassElement('p', 'blurb', blurb)
+  wrapper.appendChild(blurbText)
+  const button = createClassElement('button', 'button--secondary', 'READ MORE')
+  button.setAttribute('value', slug)
+  button.addEventListener(
+    'click',
+    () => {
+      let open = wrapper.classList.value.includes('blog-post-card--open')
+      if (open) {
+        wrapper.classList.remove('blog-post-card--open')
+        button.textContent = 'READ MORE'
+      } else {
+        wrapper.classList.add('blog-post-card--open')
+        button.textContent = 'CLOSE'
+      }
+      console.log(wrapper.classList.value)
+    },
+    false
+  )
+  wrapper.appendChild(button)
+  const blogContent = createClassElement('article', 'blog-content')
+  blogContent.innerHTML = content
+  wrapper.appendChild(blogContent)
+  BLOG_CARDS_CONTAINER.appendChild(wrapper)
+}
+
+// ******************************************************************
 // *** 00.                                              Async Fetches
 // ******************************************************************
 
 // ***** fetch Project Cards data from CosmicJS *****
+// ! using generic fetch function affects transform of cards
 let projectDataLoading = true
 const LOADING_SPINNER = document.querySelector('#spinner-container')
 
-const projectData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=projects&read_key=N6C2ydBXJRnJGr5xKPQfW16ea2qANsnZoNgLzW5hXvAUIjN8FY&limit=20&props=slug,title,content,metadata,`
+const COSMIC_API_KEY = 'N6C2ydBXJRnJGr5xKPQfW16ea2qANsnZoNgLzW5hXvAUIjN8FY'
+
+const projectData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=projects&read_key=${COSMIC_API_KEY}&limit=20&props=slug,title,content,metadata,`
 const fetchProjectData = async url => {
   try {
     const res = await fetch(url)
@@ -305,6 +363,42 @@ const fetchProjectData = async url => {
   }
 }
 fetchProjectData(projectData)
+
+// ***** reusable fetch function *****
+// url: fetch url
+// affix: location in object of array
+// action: function to run in forEach on each object in array
+// loading: loading boolean
+// loader: spinner/loader assigned to action
+const fetchData = async (url, affix, action, loading, loader) => {
+  try {
+    const res = await fetch(url)
+    const data = await res.json()
+    await data[affix].forEach((object, i) => {
+      console.log(object)
+      action(object, i)
+    })
+    loader ? (loader.style.display = 'none') : null
+    loading = false
+  } catch (err) {
+    console.log(`ERROR:`, err)
+  }
+}
+
+// ***** fetch Blog List data from CosmicJS *****
+let blogListDataLoading = true
+const blogListData = `https://api.cosmicjs.com/v1/mwwdd-blog/objects?pretty=true&hide_metafields=true&type=blogposts&read_key=${COSMIC_API_KEY}&limit=20&props=slug,title,content,metadata,`
+const fetchedBlogListAction = (object, i) => {
+  createBlogCard(
+    object.slug,
+    object.title,
+    object.metadata.post_image.imgix_url,
+    object.metadata.tags,
+    object.metadata.blurb,
+    object.content
+  )
+}
+fetchData(blogListData, 'objects', fetchedBlogListAction, blogListDataLoading)
 
 // ******************************************************************
 // *** 00.                                 Async Determined Functions
@@ -485,26 +579,3 @@ FORM_MESSAGE.addEventListener(
   },
   false
 )
-
-// *****
-// FORM_NAME.addEventListener(
-//   'blur',
-//   e => {
-//     validateField(e, 'text')
-//   },
-//   false
-// )
-// FORM_EMAIL.addEventListener(
-//   'blur',
-//   e => {
-//     validateField(e, 'email')
-//   },
-//   false
-// )
-// FORM_MESSAGE.addEventListener(
-//   'blur',
-//   e => {
-//     validateField(e, 'textarea')
-//   },
-//   false
-// )
