@@ -1858,6 +1858,7 @@ main #blog #blog-list .blog-post-card--open .blog-content p {
 main #blog #blog-list .blog-post-card--open .blog-content p img {
   display: block;
   width: 100%;
+  max-width: calc(100vw - 2rem);
   height: 100%;
   margin: 2rem auto;
 }

@@ -1598,6 +1598,7 @@ main {
               img {
                 display: block;
                 width: 100%;
+                max-width: calc(100vw - 2rem);
                 height: 100%;
                 margin: 2rem auto;
               }
