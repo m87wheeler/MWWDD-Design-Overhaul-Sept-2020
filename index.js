@@ -309,7 +309,6 @@ const createBlogCard = (slug, title, src, tags, blurb, content) => {
         wrapper.classList.add('blog-post-card--open')
         button.textContent = 'CLOSE'
       }
-      console.log(wrapper.classList.value)
     },
     false
   )
@@ -317,6 +316,15 @@ const createBlogCard = (slug, title, src, tags, blurb, content) => {
   const blogContent = createClassElement('article', 'blog-content')
   blogContent.innerHTML = content
   wrapper.appendChild(blogContent)
+  const toTop = createClassElement('button', 'button--secondary', 'Back To Top')
+  toTop.addEventListener(
+    'click',
+    () => {
+      imageContainer.scrollIntoView()
+    },
+    false
+  )
+  blogContent.appendChild(toTop)
   BLOG_CARDS_CONTAINER.appendChild(wrapper)
 }
 
