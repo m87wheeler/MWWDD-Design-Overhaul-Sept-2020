@@ -375,7 +375,6 @@ const fetchData = async (url, affix, action, loading, loader) => {
     const res = await fetch(url)
     const data = await res.json()
     await data[affix].forEach((object, i) => {
-      console.log(object)
       action(object, i)
     })
     loader ? (loader.style.display = 'none') : null
@@ -439,7 +438,7 @@ const isLoading = setInterval(() => {
 }, 500)
 
 // ******************************************************************
-// *** 00.                                     Project Scroll Buttons
+// *** 00.                                     Project Scroll Actions
 // ******************************************************************
 
 // scroll buttons for project tiles
@@ -448,45 +447,83 @@ const nextButton = document.querySelector('#next-project-btn')
 
 let currentInView = 0
 
+const nextAction = () => {
+  let startOffset = PROJECT_CARDS_ARRAY[0].offsetLeft
+
+  if (currentInView < PROJECT_CARDS_ARRAY.length - 1) {
+    let nextElementOffset = PROJECT_CARDS_ARRAY[currentInView + 1].offsetLeft
+
+    PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - startOffset
+    currentInView += 1
+  } else {
+    PROJECT_CARDS_CONTAINER.scrollLeft = startOffset - 8
+    currentInView = 0
+  }
+}
+
+const previousAction = () => {
+  let startOffset =
+    PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1].offsetLeft
+
+  if (currentInView > 0) {
+    let nextElementOffset = PROJECT_CARDS_ARRAY[currentInView - 1].offsetLeft
+    PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - 8
+    currentInView -= 1
+  } else {
+    PROJECT_CARDS_CONTAINER.scrollLeft = startOffset
+    currentInView = PROJECT_CARDS_ARRAY.length - 1
+  }
+}
+
+// ******************************************************************
+// *** 00.                                      Project Swipe Actions
+// ******************************************************************
+
+let xDown = (yDown = null)
+
+const getTouches = e => e.touches
+
+const handleTouchStart = e => {
+  const firstTouch = getTouches(e)[0]
+  xDown = firstTouch.clientX
+  yDown = firstTouch.clientY
+}
+
+const handleTouchMove = e => {
+  if (!xDown || !yDown) return
+
+  let xUp = e.touches[0].clientX
+  let yUp = e.touches[0].clientY
+
+  let xDiff = xDown - xUp
+  let yDiff = yDown - yUp
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    /*most significant*/
+    if (xDiff > 0) {
+      nextAction()
+    } else {
+      previousAction()
+    }
+  }
+  xDown = null
+  yDown = null
+}
+
 const awaitProjectLoad = setInterval(() => {
   if (!projectDataLoading) {
     clearInterval(awaitProjectLoad)
 
-    nextButton.addEventListener(
-      'click',
-      () => {
-        let startOffset = PROJECT_CARDS_ARRAY[0].offsetLeft
-
-        if (currentInView < PROJECT_CARDS_ARRAY.length - 1) {
-          let nextElementOffset =
-            PROJECT_CARDS_ARRAY[currentInView + 1].offsetLeft
-
-          PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - startOffset
-          currentInView += 1
-        } else {
-          PROJECT_CARDS_CONTAINER.scrollLeft = startOffset - 8
-          currentInView = 0
-        }
-      },
+    nextButton.addEventListener('click', nextAction, false)
+    prevButton.addEventListener('click', previousAction, false)
+    PROJECT_CARDS_CONTAINER.addEventListener(
+      'touchstart',
+      handleTouchStart,
       false
     )
-
-    prevButton.addEventListener(
-      'click',
-      () => {
-        let startOffset =
-          PROJECT_CARDS_ARRAY[PROJECT_CARDS_ARRAY.length - 1].offsetLeft
-
-        if (currentInView > 0) {
-          let nextElementOffset =
-            PROJECT_CARDS_ARRAY[currentInView - 1].offsetLeft
-          PROJECT_CARDS_CONTAINER.scrollLeft = nextElementOffset - 8
-          currentInView -= 1
-        } else {
-          PROJECT_CARDS_CONTAINER.scrollLeft = startOffset
-          currentInView = PROJECT_CARDS_ARRAY.length - 1
-        }
-      },
+    PROJECT_CARDS_CONTAINER.addEventListener(
+      'touchmove',
+      handleTouchMove,
       false
     )
   }
