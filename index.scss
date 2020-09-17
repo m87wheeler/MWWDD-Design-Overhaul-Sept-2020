@@ -1605,7 +1605,16 @@ main {
               }
 
               code {
-                overflow-y: scroll;
+                color: $blue;
+              }
+
+              a {
+                color: $red;
+                text-decoration: none;
+
+                &:hover {
+                  text-decoration: underline;
+                }
               }
             }
           }
