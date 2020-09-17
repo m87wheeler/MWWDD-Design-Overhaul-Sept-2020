@@ -1868,7 +1868,16 @@ main #blog #blog-list .blog-post-card--open .blog-content p img {
 }
 
 main #blog #blog-list .blog-post-card--open .blog-content p code {
-  overflow-y: scroll;
+  color: #0068aa;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content p a {
+  color: #ce3434;
+  text-decoration: none;
+}
+
+main #blog #blog-list .blog-post-card--open .blog-content p a:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 700px) {
