@@ -3,6 +3,8 @@ const imagemin = require('gulp-imagemin')
 const concat = require('gulp-concat')
 const minify = require('gulp-minify')
 const sass = require('gulp-sass')
+const cleanCSS = require('gulp-clean-css')
+const htmlmin = require('gulp-htmlmin')
 
 /*
     -- TOP LEVEL FUNCTIONS --
@@ -13,9 +15,12 @@ const sass = require('gulp-sass')
     done        --     
 */
 
-//? Copy all HTML files
+//? MInify and copy opy all HTML files
 gulp.task('copyHtml', async () => {
-  gulp.src('src/*.html').pipe(gulp.dest('dist'))
+  gulp
+    .src('src/*.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('dist'))
 })
 
 //? Optimise images
@@ -35,9 +40,18 @@ gulp.task('concat', async () => {
     .pipe(gulp.dest('dist/js'))
 })
 
-//? Compile SCSS
+//? Compile SCSS and minify CSS
 gulp.task('scss', async () => {
-  gulp.src('src/scss/*.scss').pipe(sass()).pipe(gulp.dest('dist/css'))
+  gulp
+    .src('src/scss/*.scss')
+    .pipe(sass())
+    .pipe(
+      cleanCSS({ debug: true }, details => {
+        console.log(`${details.name}: ${details.stats.originalSize}`)
+        console.log(`${details.name}: ${details.stats.minifiedSize}`)
+      })
+    )
+    .pipe(gulp.dest('dist/css'))
 })
 
 //? All tasks
