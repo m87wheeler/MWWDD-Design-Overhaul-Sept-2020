@@ -1,0 +1,27 @@
+{
+  "name": "mwwdd-portfolio-new",
+  "version": "1.0.0",
+  "description": "My Personal Website And Project Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m87wheeler/MWWDD-Design-Overhaul-Sept-2020.git"
+  },
+  "author": "Martin Wheeler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m87wheeler/MWWDD-Design-Overhaul-Sept-2020/issues"
+  },
+  "homepage": "https://github.com/m87wheeler/MWWDD-Design-Overhaul-Sept-2020#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}

@@ -3,3 +3,4 @@ changed_css.scss
 /Lighthouse Reports/
 
 .env
+node_modules
