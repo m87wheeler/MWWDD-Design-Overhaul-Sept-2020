@@ -1176,6 +1176,7 @@ main {
         &:nth-of-type(3n) {
           .project-card {
             background: $yellow;
+            color: $black;
           }
         }
 
